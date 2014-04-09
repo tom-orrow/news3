@@ -19,3 +19,11 @@ a:hover { text-decoration: none; }
 .navbar-fixed-top .pull-right { font-weight: 900; }
 
 .alert { cursor: pointer; }
+
+fieldset .control-group label {
+  font-weight: bold;
+  color: #737373;
+  &:after {
+    content: ":";
+  }
+}

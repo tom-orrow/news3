@@ -1,27 +1,37 @@
 .span10#new_article
-  = form_for @article, url: articles_path, method: :post, html: { multipart: true } do |f|
+  = form_for @article, url: articles_path, method: :post, html: { multipart: true, class: 'form-horizontal' } do |f|
     .article
-      .article-heading
-        h2 New Article
-      .article-body
+      fieldset
+        legend New Article
         - @article.errors.any?
-          p#flash_error.alert.alert-error
-            - @article.errors.full_messages.each do |message|
-              = message
-              br
+            p#flash_error.alert.alert-error
+              - @article.errors.full_messages.each do |message|
+                = message
+                br
         .control-group
+          = f.label :title, class: 'control-label'
           .controls
-            = f.text_field :title, autofocus: true, placeholder: 'Title', class: 'span12'
+            = f.text_field :title, autofocus: true, placeholder: 'Title...', class: 'span12'
+        .control-group
+          = f.label :title_pic, 'Title Picture', class: 'control-label'
           .controls
             = f.file_field :title_pic
+        .control-group
+          = f.label :description, class: 'control-label'
           .controls
             = f.text_area :description, placeholder: 'Description', class: 'span12', rows: 4
+        .control-group
+          = f.label :body, class: 'control-label'
+          .controls
             = f.text_area :body, placeholder: 'Text', id: 'article_body', class: 'span12 redactor', rows: 10
+        .control-group
+          = f.label :category_ids, 'Categories', class: 'control-label'
           .controls.under_redactor
             = f.select :category_ids, Category.all().map { |c| [c.name, c.id] }, {}, { multiple: true }
+        .control-group
+          = f.label :tag_list, class: 'control-label'
           .controls
             = f.text_field :tag_list, placeholder: 'Tags (separated by commas)', class: 'span12'
-
     .form-actions.pull-right
-          = f.button 'Create Article', class: 'button-blue', type: 'submit'
-          = link_to 'Cancel', '/', class: 'button-cancel'
+      = f.button 'Create Article', class: 'button-blue', type: 'submit'
+      = link_to 'Cancel', '/', class: 'button-cancel'
