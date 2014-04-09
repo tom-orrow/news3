@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = Article.friendly.find(params[:id])
     @comments = @article.comments.roots
     @comment = @article.comments.build(parent_id: params[:parent_id])
     render :index if @article.nil?
@@ -35,7 +35,6 @@ class ArticlesController < ApplicationController
 
   def create
     params[:article][:user_id] = current_user.id
-    params[:article][:active] = true
     @article = Article.new(article_params)
     if @article.save
       redirect_to root_path, notice: 'Article successfully created and is waiting for moderation.'

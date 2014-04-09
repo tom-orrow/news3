@@ -1,6 +1,8 @@
 class Article < ActiveRecord::Base
   include ThinkingSphinx::Scopes
+  extend FriendlyId
 
+  friendly_id :title, use: :slugged
   self.per_page = 4
 
   default_scope { order('updated_at DESC') }
@@ -31,8 +33,12 @@ class Article < ActiveRecord::Base
   scope :inactive, -> { where(active: false) }
   scope :active, -> { where(active: true) }
 
-  def to_param
-    "#{id} #{title}".parameterize
+  def send_article_confirmed_message
+    ArticleMailer.article_confirmed_message(self).deliver
+  end
+
+  def send_article_rejected_message(reason)
+    ArticleMailer.article_rejected_message(self, reason).deliver
   end
 
   private
@@ -58,5 +64,4 @@ class Article < ActiveRecord::Base
       FileUtils.rm_rf(dirname)
     end
   end
-
 end

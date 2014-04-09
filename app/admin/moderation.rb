@@ -1,20 +1,24 @@
 ActiveAdmin.register_page 'Moderation' do
   page_action :edit do
-    @article = Article.where(id: params[:format]).first
+    @article = Article.friendly.find(params[:format])
     render 'admin/moderation/edit', layout: 'active_admin'
   end
 
   page_action :confirm, method: 'post' do
-    article = Article.find(params[:format])
+    article = Article.friendly.find(params[:format])
     article.active = true
     if article.save
+      article.send_article_confirmed_message
       redirect_to admin_moderation_path, notice: 'Article has been confirmed.'
     else
       redirect_to admin_moderation_path, error: 'Failed to confirm article.'
     end
   end
 
-  page_action :reject do
+  page_action :reject, method: 'post' do
+    article = Article.friendly.find(params[:format])
+    article.send_article_rejected_message(params[:reason])
+    article.destroy!
     redirect_to admin_moderation_path, notice: 'Article has been rejected.'
   end
 

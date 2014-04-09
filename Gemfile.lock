@@ -18,6 +18,13 @@ GIT
       sass-rails (>= 3.2.0)
 
 GIT
+  remote: git://github.com/norman/friendly_id.git
+  revision: ec3464025ff2c412077b31d7bcb1c5bf07ad4c6e
+  specs:
+    friendly_id (5.0.0.rc3)
+      activerecord (~> 4.0.0)
+
+GIT
   remote: git://github.com/pat/thinking-sphinx.git
   revision: 4a7c7026032fc5a7e5c1cad52e55a4168e20c0ee
   specs:
@@ -320,6 +327,7 @@ DEPENDENCIES
   devise
   devise-async
   fog
+  friendly_id!
   jbuilder (~> 1.2)
   jquery-rails
   mysql2

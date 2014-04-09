@@ -5,10 +5,11 @@ class CreateArticles < ActiveRecord::Migration
       t.text :description
       t.text :body
       t.boolean :active, null: false, default: false
-
+      t.string :slug
       t.belongs_to :user
 
       t.timestamps
     end
+    add_index :articles, :slug, unique: true
   end
 end

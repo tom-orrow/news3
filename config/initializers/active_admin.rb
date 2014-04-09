@@ -211,3 +211,14 @@ ActiveAdmin.setup do |config|
   # config.filters = true
 
 end
+
+# Use Friendly Id in Active Admin
+ActiveAdmin::ResourceController.class_eval do
+  def find_resource
+    if scoped_collection.is_a? FriendlyId
+      scoped_collection.where(slug: params[:id]).first!
+    else
+      scoped_collection.where(id: params[:id]).first!
+    end
+  end
+end

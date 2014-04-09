@@ -1,10 +1,26 @@
 = render 'articles/edit'
+
+#reject_msg_modal.modal.hidden
+  .modal-header
+    h4 Reject Reason
+  .modal-body
+    = form_tag admin_moderation_reject_path(@article) do
+      = text_area_tag :reason, '', style: 'width: 505px; resize: none;'
+      hr
+      fieldset.actions
+        ol
+          li
+            = submit_tag 'Reject'
+          li.cancel
+            = link_to 'Cancel', '#', remote: true, id: 'hide_reject_modal'
+
+
 = form_for @article, class: 'formtastic article', url: admin_moderation_confirm_path(@article), method: :post do |f|
   fieldset.actions
     ol
       li.action.input_action
         = f.submit value: 'Confirm'
       li.cancel
-        = link_to 'Reject', admin_moderation_reject_path(@article)
+        = link_to 'Reject', '#', remote: true, id: 'show_reject_modal'
       li.cancel
         = link_to 'Cancel', admin_moderation_path

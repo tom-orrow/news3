@@ -5,6 +5,8 @@ ActiveAdmin.register Article do
   filter :category
   filter :created_at
 
+  actions :index, :show, :edit, :update, :destroy
+
   index do
     column :user
     column :title do |article|
@@ -26,7 +28,6 @@ ActiveAdmin.register Article do
       f.input :body, input_html: { class: 'redactor' }
     end
     f.inputs 'Details' do
-      f.input :user, collection: [[current_user.email, current_user.id]], include_blank: false
       f.input :category, include_blank: false
       f.input :tag_list, hint: 'Comma separated'
       f.input :active
