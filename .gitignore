@@ -21,3 +21,6 @@
 # Ignore Public Images
 /public/system/*
 !.keep
+
+# Ignore development Sphinx Indices
+/db/sphinx/development/*

@@ -25,7 +25,7 @@ ActiveAdmin.register_page 'Moderation' do
           table_for Article.inactive.order('created_at DESC') do
             column('User')       { |article| article.user.email }
             column('Title')      { |article| b link_to(article.title, admin_moderation_edit_path(article)) }
-            column('Category')   { |article| article.category.map { |c| c.name }.join(", ") }
+            column('Categories') { |article| article.category.map { |c| c.name }.join(", ") }
             column('Created At') { |article| article.created_at }
           end
           hr
