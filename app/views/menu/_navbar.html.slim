@@ -1,33 +1,53 @@
-.navbar.navbar-inverse.navbar-fixed-top
-  .navbar-inner
-    .container-fluid
-      a.brand href='/' News3
-      = form_tag search_articles_path, method: :get do |f|
-        i.icon-search
-        = text_field_tag :q, nil, placeholder: 'Search...', id: 'search'
-      .navbar-text.pull-right
-        - if user_signed_in?
-          ul.nav
-            li.dropdown
-              = link_to current_user.email, '#', class: 'navbar-link dropdown-toggle', data: { toggle: 'dropdown' }
-              ul.dropdown-menu
-                - if current_user.role? :admin
-                  li = link_to 'Admin Panel', admin_root_path
-                  li.divider
-                  - else if current_user.role? :moderator
-                    li = link_to 'Admin Panel', admin_moderation_path
-                    li.divider
-                li = link_to 'Add new article', new_article_path
-                li.divider
-                li = link_to 'Sign Out', destroy_user_session_path, class: 'header_nav_btn', method: :delete
-        - else
-          ul.nav
-            li
-              = link_to 'Log In', '#sign_in_form', remote: true, class: 'header_nav_btn', data: { toggle: 'modal' }
-            li.divider-vertical
-            li
-              = link_to 'Sign Up', '#sign_up_form', remote: true, class: 'header_nav_btn', data: { toggle: 'modal' }
+#squares_left
+  .first
+  .second
+  .third
+ul#categories_menu
+  - @categories_list.each do |category|
+    li class=('active' if @current_category == category.id)
+      = link_to category.name, category_path(category)
+span#mini_logo N3
+#latest_and_popular
+  .row
+    .col-md-5#latest
+      span Latest post
+      = link_to 'Gravity Review', '#'
+    .col-md-6#popular
+      span Popular
+      = link_to 'Fitbit Ultra – Review', '#'
+      .square-right
 
-= render file: 'devise/sessions/new'
-= render file: 'devise/registrations/new'
+
+/ .navbar.navbar-inverse.navbar-fixed-top
+/   .navbar-inner
+/     .container-fluid
+/       a.brand href='/' News3
+/       = form_tag search_articles_path, method: :get do |f|
+/         i.icon-search
+/         = text_field_tag :q, nil, placeholder: 'Search...', id: 'search'
+/       .navbar-text.pull-right
+/         - if user_signed_in?
+/           ul.nav
+/             li.dropdown
+/               = link_to current_user.email, '#', class: 'navbar-link dropdown-toggle', data: { toggle: 'dropdown' }
+/               ul.dropdown-menu
+/                 - if current_user.role? :admin
+/                   li = link_to 'Admin Panel', admin_root_path
+/                   li.divider
+/                   - else if current_user.role? :moderator
+/                     li = link_to 'Admin Panel', admin_moderation_path
+/                     li.divider
+/                 li = link_to 'Add new article', new_article_path
+/                 li.divider
+/                 li = link_to 'Sign Out', destroy_user_session_path, class: 'header_nav_btn', method: :delete
+/         - else
+/           ul.nav
+/             li
+/               = link_to 'Log In', '#sign_in_form', remote: true, class: 'header_nav_btn', data: { toggle: 'modal' }
+/             li.divider-vertical
+/             li
+/               = link_to 'Sign Up', '#sign_up_form', remote: true, class: 'header_nav_btn', data: { toggle: 'modal' }
+
+/ = render file: 'devise/sessions/new'
+/ = render file: 'devise/registrations/new'
 

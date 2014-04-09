@@ -6,22 +6,24 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
+    = form_tag search_articles_path, method: :get, id: 'search' do |f|
+      = text_field_tag :q, nil, placeholder: 'Search...', id: 'search'
+      = link_to '#' do
+        span.glyphicon.glyphicon-search
+        .arrow-right
     #wrap
-      .container-fluid
-        = render 'menu/navbar'
-        .row-fluid.mainbox
-          = render 'menu/sidebar'
-          .span9
-            .row-fluid
-              p#flash_notice.alert.alert-success class=('hidden' if notice.nil?)
-                = notice
-              p#flash_error.alert.alert-error class=('hidden' if alert.nil?)
-                = alert
-              == yield
+      .container
+        .row
+          .col-md-12#logo
+            = link_to 'News3', '/'
+          .col-md-12
+            = render 'menu/navbar'
+          .col-md-12#content
+            == yield
       #push
     #footer
-      .container-fluid
-        hr
-        p © Company 2013
+      .container
+        .hr
+          p © Company 2013
 
 

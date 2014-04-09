@@ -1,38 +1,15 @@
 /*
-  =require twitter-bootstrap-static/bootstrap
-
-  Use Font Awesome icons (default)
-  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
-  =require twitter-bootstrap-static/fontawesome
-  */
+ *= require bootstrap.min
+ */
 
 a:hover { text-decoration: none; }
 
-.nav-list > .active > a { background-color: #5DA5C9; }
-
-.dropdown-menu {
-  @include border-radius(0);
-  margin: 0;
-  width: 100%;
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../assets/glyphicons-halflings-regular.eot');
+  src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+       url('../assets/glyphicons-halflings-regular.woff') format('woff'),
+       url('../assets/glyphicons-halflings-regular.ttf') format('truetype'),
+       url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
-.navbar-fixed-top .pull-right { font-weight: 900; }
-
-.alert { cursor: pointer; }
-
-fieldset .control-group label {
-  font-weight: bold;
-  color: #737373;
-  &:after {
-    content: ":";
-  }
-}
-
-label, input, button, select, textarea {
-  line-height: normal;
-}
-
-.nav-pills > li > a {
-  padding: 0;
-  margin: 0 10px 10px 0;
-}

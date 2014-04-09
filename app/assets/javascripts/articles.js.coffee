@@ -1,10 +1,36 @@
 $(document).ready ->
+  set_search_actions()
   set_authentication_ajax()
   set_admin_delete_article_ajax()
   set_admin_delete_comment_ajax()
   set_article_preview_ajax()
   close_alert_on_click()
   set_focus()
+
+set_search_actions = () ->
+  $('form#search a').click () ->
+    $(this).parent().css { left: '0px' }
+    $(this).parent().addClass('active')
+    $(this).children('.arrow-right').hide()
+    $(this).siblings('input').focus()
+    return false
+
+  $(document).mouseup (e) ->
+    search_form = $('form#search')
+    if !search_form.is(e.target) && search_form.has(e.target).length == 0 && search_form.hasClass('active')
+      search_form.removeClass('active')
+      search_form.css { left: '-300px' }
+      search_form.find('a .arrow-right').show()
+      search_form.children('input').val('')
+
+
+
+
+
+
+
+
+
 
 set_focus = () ->
   $('#sign_in_form, #sign_up_form').on 'shown', () ->

@@ -1,32 +1,184 @@
-fieldset
-  legend
-    span = @page_title
-    - if @current_category && current_user
-      - if @unsubscribed
-        = link_to subscribe_articles_path(@current_category), id: 'subscribe_btn', class: 'pull-right button-blue'
-          i.icon-check
-          | Subscribe
-      - else
-        = link_to unsubscribe_articles_path(@current_category), id: 'subscribe_btn', class: 'pull-right button-delete'
-          i.icon-check
-          | Unsubscribe
-  - @articles.each do |article|
-    .span5.content-box
-      .article-heading
-        .titlepic_thumb
-          = image_tag article.title_pic.url(:thumb)
-        = link_to article_path(article) do
-          span = split_and_wrap_article_title(article.title)
-      .article-body
-        div
-          ' By
-          b = article.user.fullname
-          '  |
-          time = article.user.created_at.strftime("%b #{article.user.created_at.day.ordinalize}, %Y")
-        p.article-description
-          = article.description
-        = link_to 'Read More', article_path(article), class: 'button-blue small'
-        - if current_user && current_user.role?(:admin)
-          = link_to 'Delete', article_path(article.id), class: 'button-delete small', method: :delete, remote: true
-  .span10
-    = will_paginate @articles, renderer: 'BootstrapPaginationHelper::LinkRenderer'
+.page_subtitle
+  .hr
+  h2
+    ' Latest
+    span Articles
+  h2.subscribe
+    = link_to '#' do
+      | Subscribe +
+
+.row.index-content
+  .col-md-4
+    = image_tag 'missing.png'
+    .description_box
+      .post_category
+        | Movies
+      .post_title
+        = link_to 'Gravity Review', article_path(@articles.first)
+      .post_description
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
+      .post_date
+        time.glyphicon.glyphicon-calendar
+        ' 11th December by
+        span Andrey Yuferov
+  .col-md-4
+    = image_tag 'missing.png'
+    .description_box
+      .post_category
+        | Sport
+      .post_title
+        = link_to 'Double points for season', '#'
+      .post_description
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut...
+      .post_date
+        time.glyphicon.glyphicon-calendar
+        ' 11th December by
+        span Andrey Yuferov
+  .col-md-4
+    = image_tag 'missing.png'
+    .description_box
+      .post_category
+        | Sport
+      .post_title
+        = link_to 'FIA post-qualifying', '#'
+      .post_description
+        | Lorem ipsum dolor sit amet, consectetur...
+      .post_date
+        time.glyphicon.glyphicon-calendar
+        ' 11th December by
+        span Andrey Yuferov
+  .col-md-4
+    = image_tag 'missing.png'
+    .description_box
+      .post_category
+        | Movies
+      .post_title
+        = link_to 'Gravity Review', '#'
+      .post_description
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
+      .post_date
+        time.glyphicon.glyphicon-calendar
+        ' 11th December by
+        span Andrey Yuferov
+  .col-md-4
+    = image_tag 'missing.png'
+    .description_box
+      .post_category
+        | Sport
+      .post_title
+        = link_to 'Double points for season', '#'
+      .post_description
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
+      .post_date
+        time.glyphicon.glyphicon-calendar
+        ' 11th December by
+        span Andrey Yuferov
+  .col-md-4
+    = image_tag 'missing.png'
+    .description_box
+      .post_category
+        | Sport
+      .post_title
+        = link_to 'FIA post-qualifying', '#'
+      .post_description
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+      .post_date
+        time.glyphicon.glyphicon-calendar
+        ' 11th December by
+        span Andrey Yuferov
+
+.page_subtitle
+  .hr
+  h2
+    ' Most
+    span Popular
+  h2.subscribe
+    = link_to '#' do
+      | Subscribe +
+
+.row.index-content
+  .col-md-6
+    = image_tag 'missing.png'
+    .description_box
+      .post_title
+        = link_to 'FIA post-qualifying', '#'
+      .post_description
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
+      .post_date
+        time.glyphicon.glyphicon-calendar
+        ' 11th December by
+        span Andrey Yuferov
+      .comments-counter
+        | 20
+  .col-md-6
+    = image_tag 'missing.png'
+    .description_box
+      .post_title
+        = link_to 'Gravity Review', '#'
+      .post_description
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
+      .post_date
+        time.glyphicon.glyphicon-calendar
+        ' 11th December by
+        span Andrey Yuferov
+      .comments-counter
+        | 17
+  .col-md-6
+    = image_tag 'missing.png'
+    .description_box
+      .post_title
+        = link_to 'Double points for season', '#'
+      .post_description
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
+      .post_date
+        time.glyphicon.glyphicon-calendar
+        ' 11th December by
+        span Andrey Yuferov
+      .comments-counter
+        | 4
+  .col-md-6
+    = image_tag 'missing.png'
+    .description_box
+      .post_title
+        = link_to 'FIA post-qualifying', '#'
+      .post_description
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
+      .post_date
+        time.glyphicon.glyphicon-calendar
+        ' 11th December by
+        span Andrey Yuferov
+      .comments-counter
+        | 1
+
+/ fieldset
+/   legend
+/     span = @page_title
+/     - if @current_category && current_user
+/       - if @unsubscribed
+/         = link_to subscribe_articles_path(@current_category), id: 'subscribe_btn', class: 'pull-right button-blue'
+/           i.icon-check
+/           | Subscribe
+/       - else
+/         = link_to unsubscribe_articles_path(@current_category), id: 'subscribe_btn', class: 'pull-right button-delete'
+/           i.icon-check
+/           | Unsubscribe
+/   - @articles.each do |article|
+/     .span5.content-box
+/       .article-heading
+/         .titlepic_thumb
+/           = image_tag article.title_pic.url(:thumb)
+/         = link_to article_path(article) do
+/           span = split_and_wrap_article_title(article.title)
+/       .article-body
+/         div
+/           ' By
+/           b = article.user.fullname
+/           '  |
+/           time = article.user.created_at.strftime("%b #{article.user.created_at.day.ordinalize}, %Y")
+/         p.article-description
+/           = article.description
+/         = link_to 'Read More', article_path(article), class: 'button-blue small'
+/         - if current_user && current_user.role?(:admin)
+/           = link_to 'Delete', article_path(article.id), class: 'button-delete small', method: :delete, remote: true
+/   .span10
+/     = will_paginate @articles, renderer: 'BootstrapPaginationHelper::LinkRenderer'
