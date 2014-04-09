@@ -233,9 +233,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
 
-  OMNIAUTH_SECRETS = YAML.load_file("#{::Rails.root}/config/omniauth/secrets.yml")
   require 'omniauth-facebook'
-  config.omniauth :facebook, OMNIAUTH_SECRETS['facebook']['app_id'], OMNIAUTH_SECRETS['facebook']['secret'], {
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], {
     scope: 'email, offline_access',
     client_options: {
       ssl: { ca_file: '/usr/lib/ssl/certs/ca-certificates.crt' }
@@ -243,7 +242,7 @@ Devise.setup do |config|
   }
 
   require 'omniauth-google-oauth2'
-  config.omniauth :google_oauth2, OMNIAUTH_SECRETS['google']['app_id'], OMNIAUTH_SECRETS['google']['secret'], {
+  config.omniauth :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], {
     scope: 'userinfo.email, userinfo.profile',
     client_options: {
       ssl: { ca_file: '/usr/lib/ssl/certs/ca-certificates.crt' }

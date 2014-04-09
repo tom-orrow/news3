@@ -15,8 +15,8 @@
 /log/
 /tmp
 
-# Ignore OmniAuth secrets.
-/config/omniauth/secrets.yml
+# Ignore dotenv.
+/.env
 
 # Ignore Public Images
 /public/system/*
