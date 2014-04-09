@@ -1,6 +1,6 @@
 p Hello #{@resource.fullname}.
-p We have a new article "#{link_to @article.title, article_path(@article, only_path: false)}" in category "#{@category.name}":
+p We have a new article "#{link_to @article.title, article_url(@article)}" in category "#{@category.name}":
 br
 p "#{@article.description}"
 br
-p To unsubscribe click: #{link_to "Unsubscribe", unsubscribe_articles_path(@category, only_path: false)}
+p To unsubscribe click: #{link_to "Unsubscribe", unsubscribe_articles_url(@category)}
