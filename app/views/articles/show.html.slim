@@ -79,11 +79,11 @@
                     .titlepic style='background-image: url("#{related_article.title_pic.url(:thumb)}")'
                     = related_article.title
             ul#recent_articles
-             - @related_articles.each do |related_article|
+             - @recent_articles.each do |recent_article|
                 li
-                  = link_to article_path(related_article) do
-                    .titlepic style='background-image: url("#{related_article.title_pic.url(:thumb)}")'
-                    = related_article.title
+                  = link_to article_path(recent_article) do
+                    .titlepic style='background-image: url("#{recent_article.title_pic.url(:thumb)}")'
+                    = recent_article.title
           #related_categories
             ul
               li.active value='related_articles'

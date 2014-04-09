@@ -104,7 +104,7 @@ namespace :db do
           vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
         active: true,
         user_id: 1,
-        tag_list: 'car, cake, candle',
+        tag_list: %w(car cake candle crop cambogia carbonyl comfort cookie cyphers).sample(2).join(', '),
         category_ids: [rand(1..38), rand(1..38)],
         title_pic: File.open(Rails.root + 'public/uploads/article/title_pic/sample/' + (rand(1..9).to_s + '.jpg'))
       ])

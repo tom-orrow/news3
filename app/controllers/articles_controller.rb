@@ -49,7 +49,7 @@ class ArticlesController < ApplicationController
     @comments = @article.comments.roots.includes(:user)
     @comment = @article.comments.build(parent_id: params[:parent_id])
     @related_articles = Article.tagged_with(@article.tag_list, any: true).limit(15)
-    @latest_articles = Article.limit(15)
+    @recent_articles = Article.limit(15)
     render :index if @article.nil?
   end
 
