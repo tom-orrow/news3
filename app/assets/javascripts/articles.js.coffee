@@ -3,6 +3,11 @@ $(document).ready ->
   set_admin_delete_article_ajax()
   set_admin_delete_comment_ajax()
   close_alert_on_click()
+  set_focus()
+
+set_focus = () ->
+  $('#sign_in_form, #sign_up_form').on 'shown', () ->
+    $('input#user_email').focus()
 
 set_authentication_ajax = () ->
   $('#sign_up_form form').bind 'ajax:success', (e, data, status, xhr) ->
@@ -24,12 +29,18 @@ set_authentication_ajax = () ->
       $('#sign_in_form p.alert').removeClass('hidden')
 
 set_admin_delete_article_ajax = () ->
-  $('div.span5.article .button-delete').bind 'ajax:success', (e, data, status, xhr) ->
-    $(this).parent().parent().remove() if data.success
+  $('div.span5.content-box .button-delete').bind 'ajax:success', (e, data, status, xhr) ->
+    if data.success
+      $(this).parent().parent().fadeOut('slow', () ->
+        $(this).remove()
+      )
 
 set_admin_delete_comment_ajax = () ->
   $('div.comments .button-delete').bind 'ajax:success', (e, data, status, xhr) ->
-    $(this).parent().parent().parent().remove() if data.success
+    if data.success
+      $(this).parent().parent().parent().fadeOut('slow', () ->
+        $(this).remove()
+      )
 
 close_alert_on_click = () ->
   $('.alert').click () ->
