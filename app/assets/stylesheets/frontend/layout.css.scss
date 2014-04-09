@@ -111,3 +111,14 @@ textarea { resize: none; }
 
   &:focus { width: 200px; }
 }
+
+// Social icons spriting
+@import 'social-media-icons/*.png';
+@include all-social-media-icons-sprites;
+$social_media_icons_height: social-media-icons-sprite-height(facebook);
+$social_media_icons_width: social-media-icons-sprite-width(facebook);
+
+.social-media-icons {
+  height: $social_media_icons_height;
+  width: $social_media_icons_width;
+}

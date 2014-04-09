@@ -27,6 +27,12 @@ fieldset .control-group label {
     content: ":";
   }
 }
+
 label, input, button, select, textarea {
   line-height: normal;
+}
+
+.nav-pills > li > a {
+  padding: 0;
+  margin: 0 10px 10px 0;
 }

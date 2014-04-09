@@ -4,9 +4,7 @@
       - case provider.to_s
       - when 'facebook'
         li
-          = link_to omniauth_authorize_path(resource_name, provider) do
-            = image_tag('social_media_icons/facebook.png')
+          = link_to '', omniauth_authorize_path(resource_name, provider), class: 'social-media-icons social-media-icons-facebook'
       - when 'google_oauth2'
         li
-          = link_to omniauth_authorize_path(resource_name, provider) do
-            = image_tag('social_media_icons/google.png')
+          = link_to '', omniauth_authorize_path(resource_name, provider), class: 'social-media-icons social-media-icons-google'
