@@ -1,5 +1,11 @@
 = render 'articles/edit'
 
+fieldset.inputs
+  legend
+    span Tags
+  .span9
+    b = @article.tags.map(&:name).join(', ')
+
 #reject_msg_modal.modal.hidden
   .modal-header
     h4 Reject Reason

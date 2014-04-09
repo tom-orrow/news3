@@ -6,7 +6,7 @@ module ArticleHelper
   end
 
   def split_and_wrap_article_title(title)
-    title.scan(/.{1,35}(?: +|$\n?)/).map do |string|
+    title.scan(/.{1,30}(?: +|$\n?)/).map do |string|
       content_tag(:b, string) unless string.strip.nil?
     end.join.html_safe
   end

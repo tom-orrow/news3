@@ -36,8 +36,3 @@ fieldset.inputs
           b = pluralize(@article.comments.count, 'Comment', 'Comments')
     .article-body
       p = raw @article.body
-fieldset.inputs
-  legend
-    span Tags
-  .span9
-    b = @article.tags.map(&:name).join(', ')

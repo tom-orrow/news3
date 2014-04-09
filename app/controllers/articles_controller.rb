@@ -35,6 +35,7 @@ class ArticlesController < ApplicationController
 
   def create
     params[:article][:user_id] = current_user.id
+    params[:article][:active] = true
     @article = Article.new(article_params)
     if @article.save
       redirect_to root_path, notice: 'Article successfully created and is waiting for moderation.'
