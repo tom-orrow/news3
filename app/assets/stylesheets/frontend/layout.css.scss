@@ -103,7 +103,7 @@ body {
   width: 950px;
   background-color: #292929;
   margin-left: -10px;
-  padding-left: 25px;
+  padding-left: 22px;
   margin-bottom: 0px;
   z-index: 3;
   position: relative;
@@ -111,12 +111,11 @@ body {
   li {
     text-transform: uppercase;
     display:inline;
-    padding: 5px;
+    padding: 5px 0px;
 
     a {
-      padding-top: 10px;
-      padding-right: 8px;
-      margin-right: 18px;
+      padding: 10px 8px;
+      margin-right: 10px;
       line-height: 45px;
       font-family: Economica, sans-serif;
       font-size: 18px;
@@ -269,10 +268,6 @@ textarea { resize: none; }
 .button-cancel { background-color: #CECECE; }
 .button-delete { background-color: #DF3030; }
 
-@import 'social-media-icons/*.png';
-@include all-social-media-icons-sprites;
-$social_media_icons_height: social-media-icons-sprite-height(facebook);
-$social_media_icons_width: social-media-icons-sprite-width(facebook);
 #sign_in_form .modal-content {
   position: fixed;
   z-index: 20;
@@ -285,15 +280,20 @@ $social_media_icons_width: social-media-icons-sprite-width(facebook);
   border-radius: 0;
 
   .modal-header {
-    padding: 6px 9px;
     border: 0;
 
-    button { font-size: 24px; }
+    button {
+      font-size: 24px;
+      line-height: 15px;
+    }
   }
   .modal-body {
+    text-align: center;
+    padding: 0px 40px 30px;
+
     #mini_logo {
       @include adjust-font-size-to(62px);
-      line-height: 80px;
+      line-height: 60px;
       font-weight: bold;
       color: #292929;
       text-shadow: 2px 2px rgba(0,0,0,0.3);
@@ -301,9 +301,107 @@ $social_media_icons_width: social-media-icons-sprite-width(facebook);
 
       span { color: #00b1d7; }
     }
-  }
-  .social-media-icons {
-    height: $social_media_icons_height;
-    width: $social_media_icons_width;
+    ul.nav.nav-tabs {
+      padding-top: 20px;
+      padding-left: 28px;
+
+      li a {
+        font-size: 16px;
+        padding: 12px 30px 8px;
+        text-transform: uppercase;
+        font-family: Brandon, sans-serif;
+        border-radius: 0;
+        color: #00b1d7;
+      }
+      li.active a, li a:hover { color: #292929; }
+      li:not(.active) a:hover {
+        background: #fff;
+        border-color: transparent;
+        border-bottom: 1px solid #ddd;
+      }
+    }
+    ul.nav.nav-pills {
+      li {
+        padding: 30px 6px 15px;
+        a {
+          @include opacity(0.9);
+          border-radius: 0;
+          color: #fff;
+          width: 60px;
+          height: 60px;
+          font-size: 36px;
+          padding: 6px 0 0 1px;
+
+          &:hover { @include opacity(1); }
+        }
+        &.google-plus a { background-color: #DD4B39; }
+        &.twitter a { background-color: #00ACED; }
+        &.vk a { background-color: #0274B3; }
+        &.facebook a { background-color: #4B68B9; }
+      }
+    }
+    h5 {
+      text-align: center;
+      font-family: Brandon, sans-serif;
+      font-size: 20px;
+      text-transform: uppercase;
+      color: #555;
+
+      &:before {
+        content: "";
+        display: inline-block;
+        position: relative;
+        border-top: 1px solid #DDD;
+        width: 12px;
+        height: 7px;
+        margin: 0 4px;
+      }
+      &:after {
+        content: "";
+        display: inline-block;
+        position: relative;
+        border-top: 1px solid #DDD;
+        width: 12px;
+        height: 7px;
+        margin: 0 4px;
+      }
+    }
+    form {
+      position: relative;
+      text-align: left;
+      padding-top: 3px;
+
+      input {
+        border-radius: 0;
+        margin: 10px 0;
+        padding: 22px 10px 18px;
+        font-family: Adele, sans-serif;
+        font-style: italic;
+      }
+      label {
+        padding-left: 5px;
+        font-weight: normal;
+        font-family: Adele, sans-serif;
+        font-size: 13px;
+        color: #555;
+      }
+      .button-blue {
+        position: absolute;
+        right: 0px;
+      }
+    }
+    #log_in_box #password_recover_link {
+      position: absolute;
+      top: 77px;
+      right: 10px;
+      font-family: Adele, sans-serif;
+      color: #00b1d7;
+
+      &:hover { color: #292929; }
+    }
+    #sign_in_box {
+      display: none;
+      padding-bottom: 35px;
+    }
   }
 }

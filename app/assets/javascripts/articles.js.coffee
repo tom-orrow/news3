@@ -1,4 +1,7 @@
 $(document).ready ->
+  $('#sign_in_form').modal('show');
+
+
   set_search_actions()
   show_page_sidebox_sticker()
   set_authentication_ajax()
@@ -31,18 +34,16 @@ show_page_sidebox_sticker = () ->
     else
       $('div#side_box').css({'position': 'absolute', 'top': '0px'})
 
-
-
-
-
-
-
-
-set_focus = () ->
-  $('#sign_in_form, #sign_up_form').on 'shown', () ->
-    $('input#user_email').focus()
-
 set_authentication_ajax = () ->
+  $('#sign_in_form ul.nav.nav-tabs li a').click () ->
+    $('#sign_in_form ul.nav.nav-tabs li.active').removeClass('active')
+    $(this).parent().addClass('active')
+    box_id = $(this).attr('href')
+    another_box_id = $('#sign_in_form ul.nav.nav-tabs li:not(.active) a').attr('href')
+    $(another_box_id).hide()
+    $(box_id).show()
+    return false
+
   $('#sign_up_form form').bind 'ajax:success', (e, data, status, xhr) ->
     $('#sign_up_form p.alert').html('').addClass('hidden')
     if data.success
@@ -60,6 +61,15 @@ set_authentication_ajax = () ->
     else
       $('#sign_in_form p.alert').html(data.errors.join('<br />'))
       $('#sign_in_form p.alert').removeClass('hidden')
+
+
+
+
+
+
+set_focus = () ->
+  $('#sign_in_form, #sign_up_form').on 'shown', () ->
+    $('input#user_email').focus()
 
 set_article_preview_ajax = () ->
   $('#new_article a#preview_article_btn').click (event) ->

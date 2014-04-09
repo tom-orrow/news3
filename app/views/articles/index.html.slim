@@ -11,23 +11,22 @@
 
 .row.index-content
   .col-xs-12
-    #article_top
+    #latest_articles_top
       = link_to article_path(@articles.first) do
         = image_tag 'test_article_titlepic_md.jpg', id: 'titlepic'
-      .post_category
-        | Movies
+      = link_to 'Movies', '#', class: 'post_category'
       h1
         = link_to 'Gravity Review', article_path(@articles.first)
         .post_date
           ' 11th December by
           span Andrey Yuferov
 
+.row.index-content
   .col-xs-4
     = link_to article_path(@articles.first) do
       = image_tag 'missing.png'
     .description_box
-      .post_category
-        | Movies
+      = link_to 'Movies', '#', class: 'post_category'
       .post_title
         = link_to 'Gravity Review', article_path(@articles.first)
       .post_description
@@ -40,8 +39,7 @@
     = link_to article_path(@articles.first) do
       = image_tag 'missing.png'
     .description_box
-      .post_category
-        | Sport
+      = link_to 'Sport', '#', class: 'post_category'
       .post_title
         = link_to 'Double points for season', '#'
       .post_description
@@ -54,8 +52,7 @@
     = link_to article_path(@articles.first) do
       = image_tag 'missing.png'
     .description_box
-      .post_category
-        | Sport
+      = link_to 'Sport', '#', class: 'post_category'
       .post_title
         = link_to 'FIA post-qualifying', '#'
       .post_description
@@ -64,6 +61,25 @@
         time.glyphicon.glyphicon-calendar
         ' 11th December by
         span Andrey Yuferov
+
+.row.index-content
+  .col-xs-12
+    #latest_articles_bottom
+      = link_to article_path(@articles.first) do
+        = image_tag 'missing.png'
+      .meta
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', article_path(@articles.first)
+        .post_date
+          ' By
+          span
+            ' Andrey Yuferov
+          | on Dec 14, 2013
+        .comments-counter
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+          .fadeout
 
 .page_subtitle
   .hr
@@ -80,6 +96,7 @@
       = link_to '#' do
         = image_tag 'missing.png'
       .description_box
+        = link_to 'Sport', '#', class: 'post_category'
         .post_title
           = link_to 'FIA post-qualifying', '#'
         .post_description
@@ -95,6 +112,7 @@
       = link_to '#' do
         = image_tag 'missing.png'
       .description_box
+        = link_to 'Movies', '#', class: 'post_category'
         .post_title
           = link_to 'Gravity Review', '#'
         .post_description
@@ -110,6 +128,7 @@
       = link_to '#' do
         = image_tag 'missing.png'
       .description_box
+        = link_to 'Sport', '#', class: 'post_category'
         .post_title
           = link_to 'Double points for season', '#'
         .post_description
@@ -125,6 +144,7 @@
       = link_to '#' do
         = image_tag 'missing.png'
       .description_box
+        = link_to 'Sport', '#', class: 'post_category'
         .post_title
           = link_to 'FIA post-qualifying', '#'
         .post_description

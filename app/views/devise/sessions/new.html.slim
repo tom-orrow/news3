@@ -8,17 +8,42 @@
         #mini_logo
           | News
           span 3
-        p cvcvvccsadcsadasd
-        p cvcvvccsadcsadasd
-        p cvcvvccsadcsadasd
-        p cvcvvccsadcsadasd
-        p cvcvvccsadcsadasd
-        p cvcvvccsadcsadasd
-        p cvcvvccsadcsadasd
-        p cvcvvccsadcsadasd
-        p cvcvvccsadcsadasd
-        p cvcvvccsadcsadasd
-        p cvcvvccsadcsadasd
+        ul.nav.nav-tabs
+          li.active
+            = link_to 'Log In', '#log_in_box'
+          li
+            = link_to 'Sign In', '#sign_in_box'
+        ul.nav.nav-pills
+          li.google-plus
+            = link_to '#', id: 'like_btn', class: 'twitter' do
+              i.fa.fa-google-plus
+          li.twitter
+            = link_to '#', id: 'like_btn', class: 'twitter' do
+              i.fa.fa-twitter
+          li.vk
+            = link_to '#', id: 'like_btn', class: 'twitter' do
+              i.fa.fa-vk
+          li.facebook
+            = link_to '#', id: 'like_btn', class: 'twitter' do
+              i.fa.fa-facebook
+        h5 or
+        #log_in_box
+          = form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f|
+            = f.email_field :email, class: 'form-control', placeholder: 'Email'
+            = f.password_field :password, class: 'form-control', placeholder: 'Password'
+            - if devise_mapping.recoverable? || %w(passwords registrations).include?(controller_name)
+              = link_to 'forgot?', new_password_path(resource_name), id: 'password_recover_link'
+            = f.check_box :remember_me
+            label
+              | Remember me?
+            = button_tag 'Log In', type: 'submit', class: 'button-blue'
+
+        #sign_in_box
+          = form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f|
+            = f.email_field :email, class: 'form-control', placeholder: 'Email'
+            = f.password_field :password, class: 'form-control', placeholder: 'Password'
+            = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password Confirmation'
+            = button_tag 'Sign In', type: 'submit', class: 'button-blue'
 
 
 
