@@ -1,0 +1,22 @@
+development:
+  adapter: postgresql
+  username: postgres
+  password: pwd
+  database: news3_dev
+  host: localhost
+  pool: 5
+
+test:
+  adapter: postgresql
+  username: postgres
+  password: pwd
+  database: news3_test
+  host: localhost
+  pool: 5
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: news3
+  pool: 5
+  timeout: 5000
