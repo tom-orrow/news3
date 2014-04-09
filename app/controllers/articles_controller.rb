@@ -8,6 +8,13 @@ class ArticlesController < ApplicationController
     @unsubscribed = current_user.categories.exists?(@current_category).nil? if @current_category && current_user
   end
 
+  def list
+    @current_category = params['category_id'].to_i
+    @articles = Article.by_category(@current_category).active.paginate(page: params[:page]).includes(:user)
+    @page_title = 'Category: <span>' << @categories_list.find(@current_category).name << '</span>'
+    @unsubscribed = current_user.categories.exists?(@current_category).nil? if current_user
+  end
+
   def search
     if params[:tag]
       @articles = Article.tagged_with(params[:tag]).active.paginate(page: params[:page]).includes(:user)
@@ -21,7 +28,7 @@ class ArticlesController < ApplicationController
       )
     end
     @page_title = "Search Results: #{pluralize(@articles.count, 'Article', 'Articles')} Found"
-    render :index
+    render :list
   end
 
   def subscribe

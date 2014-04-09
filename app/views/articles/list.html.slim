@@ -1,0 +1,120 @@
+.row
+  .col-xs-12
+    .page_subtitle
+      .hr
+      h2
+        = raw @page_title
+      h2.subscribe
+        = link_to '#' do
+          | Subscribe +
+- if @articles.nil?
+  h2 Empty Results
+- else
+  .row
+    .col-xs-12
+      .post-wide-detailed
+        = link_to article_path(@articles.first) do
+          = image_tag 'missing.png'
+        .meta
+          = link_to 'Movies', '#', class: 'post_category'
+          .post_title
+            = link_to 'Gravity Review', article_path(@articles.first)
+          .post_date
+            ' By
+            span
+              ' Andrey Yuferov
+            | on Dec 14, 2013
+          .comments-counter
+          .post_description
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+            .fadeout
+
+  .row
+    .col-xs-4
+      .post-image-desc
+        = link_to article_path(@articles.first) do
+          = image_tag 'missing.png'
+        .description_box
+          = link_to 'Movies', '#', class: 'post_category'
+          .post_title
+            = link_to 'Gravity Review', article_path(@articles.first)
+          .post_description
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+          .post_date
+            time.glyphicon.glyphicon-calendar
+            ' 11th December by
+            span Andrey Yuferov
+    .col-xs-4
+      .post-image-desc
+        = link_to article_path(@articles.first) do
+          = image_tag 'missing.png'
+        .description_box
+          = link_to 'Sport', '#', class: 'post_category'
+          .post_title
+            = link_to 'Double points for season', '#'
+          .post_description
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut...
+          .post_date
+            time.glyphicon.glyphicon-calendar
+            ' 11th December by
+            span Andrey Yuferov
+    .col-xs-4
+      .post-image-desc
+        = link_to article_path(@articles.first) do
+          = image_tag 'missing.png'
+        .description_box
+          = link_to 'Sport', '#', class: 'post_category'
+          .post_title
+            = link_to 'FIA post-qualifying', '#'
+          .post_description
+            | Lorem ipsum dolor sit amet, consectetur...
+          .post_date
+            time.glyphicon.glyphicon-calendar
+            ' 11th December by
+            span Andrey Yuferov
+    .col-xs-4
+      .post-image-desc
+        = link_to article_path(@articles.first) do
+          = image_tag 'missing.png'
+        .description_box
+          = link_to 'Sport', '#', class: 'post_category'
+          .post_title
+            = link_to 'FIA post-qualifying', '#'
+          .post_description
+            | Lorem ipsum dolor sit amet, consectetur...
+          .post_date
+            time.glyphicon.glyphicon-calendar
+            ' 11th December by
+            span Andrey Yuferov
+    .col-xs-4
+      .post-image-desc
+        = link_to article_path(@articles.first) do
+          = image_tag 'missing.png'
+        .description_box
+          = link_to 'Sport', '#', class: 'post_category'
+          .post_title
+            = link_to 'FIA post-qualifying', '#'
+          .post_description
+            | Lorem ipsum dolor sit amet, consectetur...
+          .post_date
+            time.glyphicon.glyphicon-calendar
+            ' 11th December by
+            span Andrey Yuferov
+    .col-xs-4
+      .post-image-desc
+        = link_to article_path(@articles.first) do
+          = image_tag 'missing.png'
+        .description_box
+          = link_to 'Sport', '#', class: 'post_category'
+          .post_title
+            = link_to 'FIA post-qualifying', '#'
+          .post_description
+            | Lorem ipsum dolor sit amet, consectetur...
+          .post_date
+            time.glyphicon.glyphicon-calendar
+            ' 11th December by
+            span Andrey Yuferov
+
+  .row
+    .col-xs-12#pagination
+      = will_paginate @articles, renderer: 'BootstrapPaginationHelper::LinkRenderer'

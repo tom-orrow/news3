@@ -1,8 +1,12 @@
 #comments {
-  background-color: #fff;
+  background-color: $color_3;
   border: 1px solid #ebebeb;
 
-  h2 { @include adjust-font-size-to(20px); margin: 10px 0;}
+  h2 {
+    font-size: 18px;
+    line-height: 25px;
+    margin: 10px 0;
+  }
   .comments-heading {
     border-bottom: 1px solid #ebebeb;
     overflow: hidden;
@@ -14,13 +18,13 @@
     }
     #comments_title {
       position: absolute;
-      font-family: Adele, sans-serif;
+      font-family: $font_family_2;
       left: 20px;
       top: 10px;
     }
     #comments_count {
-      font-family: BebasNeue, sans-serif;
-      color: $meta-color;
+      font-family: $font_family_1;
+      color: $color_4;
       position: absolute;
       right: 20px;
       top: 10px;
@@ -32,7 +36,7 @@
     position: absolute;
     border: 1px solid #ddd;
     padding: 5px;
-    background: #fff;
+    background: $color_3;
   }
 }
 
@@ -59,8 +63,7 @@
     .nested_comments { padding-left: 0; }
   }
   .media-body {
-    @include adjust-font-size-to(16px);
-    color: $base-text-color;
+    color: #555;
     border: 1px solid #ddd;
     background: #f6f6f6;
     position: relative;
@@ -74,9 +77,9 @@
       font-size: 1.2em;
       margin-top: 1em;
       margin-bottom: 0;
-      font-family: BebasNeue, sans-serif;
+      font-family: $font_family_1;
     }
-    &.reply { border-color: #00b1d7; }
+    &.reply { border-color: $color_2; }
     &:hover .actions { display: block; }
     .actions {
       position: absolute;
@@ -88,15 +91,15 @@
     p {
       @include word-break(break-word);
       margin-right: 80px;
-      font-family: Adele, sans-serif;
+      font-family: $font_family_2;
     }
     .comment-meta {
-      color: $meta-color;
+      color: $color_4;
       font-size: 0.9em;
       font-weight: 900;
       margin-top: 0.3em;
       margin-bottom: 0.9em;
-      font-family: Economica, sans-serif;
+      font-family: $font_family_3;
 
       i { margin-right: 6px; }
       span.right-border {

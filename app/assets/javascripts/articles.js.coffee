@@ -1,7 +1,4 @@
 $(document).ready ->
-  $('#sign_in_form').modal('show');
-
-
   set_search_actions()
   show_page_sidebox_sticker()
   set_authentication_ajax()
@@ -43,6 +40,11 @@ set_authentication_ajax = () ->
     $(another_box_id).hide()
     $(box_id).show()
     return false
+
+  $('#sign_in_form').on 'show.bs.modal', () ->
+    $('div#wrap, div#footer').addClass('blur')
+  $('#sign_in_form').on 'hide.bs.modal', () ->
+    $('div#wrap, div#footer').removeClass('blur')
 
   $('#sign_up_form form').bind 'ajax:success', (e, data, status, xhr) ->
     $('#sign_up_form p.alert').html('').addClass('hidden')

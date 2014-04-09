@@ -11,7 +11,7 @@
 
 .row.index-content
   .col-xs-12
-    #latest_articles_top
+    .post-wide-title
       = link_to article_path(@articles.first) do
         = image_tag 'test_article_titlepic_md.jpg', id: 'titlepic'
       = link_to 'Movies', '#', class: 'post_category'
@@ -23,48 +23,51 @@
 
 .row.index-content
   .col-xs-4
-    = link_to article_path(@articles.first) do
-      = image_tag 'missing.png'
-    .description_box
-      = link_to 'Movies', '#', class: 'post_category'
-      .post_title
-        = link_to 'Gravity Review', article_path(@articles.first)
-      .post_description
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
-      .post_date
-        time.glyphicon.glyphicon-calendar
-        ' 11th December by
-        span Andrey Yuferov
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        = image_tag 'missing.png'
+      .description_box
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', article_path(@articles.first)
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
   .col-xs-4
-    = link_to article_path(@articles.first) do
-      = image_tag 'missing.png'
-    .description_box
-      = link_to 'Sport', '#', class: 'post_category'
-      .post_title
-        = link_to 'Double points for season', '#'
-      .post_description
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut...
-      .post_date
-        time.glyphicon.glyphicon-calendar
-        ' 11th December by
-        span Andrey Yuferov
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        = image_tag 'missing.png'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'Double points for season', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
   .col-xs-4
-    = link_to article_path(@articles.first) do
-      = image_tag 'missing.png'
-    .description_box
-      = link_to 'Sport', '#', class: 'post_category'
-      .post_title
-        = link_to 'FIA post-qualifying', '#'
-      .post_description
-        | Lorem ipsum dolor sit amet, consectetur...
-      .post_date
-        time.glyphicon.glyphicon-calendar
-        ' 11th December by
-        span Andrey Yuferov
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        = image_tag 'missing.png'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'FIA post-qualifying', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
 
 .row.index-content
   .col-xs-12
-    #latest_articles_bottom
+    .post-wide-detailed
       = link_to article_path(@articles.first) do
         = image_tag 'missing.png'
       .meta
@@ -92,7 +95,7 @@
 
 .row.index-content
   .col-xs-6
-    .box
+    .post-small-image-desc
       = link_to '#' do
         = image_tag 'missing.png'
       .description_box
@@ -108,7 +111,7 @@
         .comments-counter
           | 20
   .col-xs-6
-    .box
+    .post-small-image-desc
       = link_to '#' do
         = image_tag 'missing.png'
       .description_box
@@ -124,7 +127,7 @@
         .comments-counter
           | 17
   .col-xs-6
-    .box
+    .post-small-image-desc
       = link_to '#' do
         = image_tag 'missing.png'
       .description_box
@@ -140,7 +143,7 @@
         .comments-counter
           | 4
   .col-xs-6
-    .box
+    .post-small-image-desc
       = link_to '#' do
         = image_tag 'missing.png'
       .description_box

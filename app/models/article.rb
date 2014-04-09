@@ -3,7 +3,7 @@ class Article < ActiveRecord::Base
   extend FriendlyId
 
   friendly_id :title, use: :slugged
-  self.per_page = 4
+  self.per_page = 1
 
   default_scope { order('updated_at DESC') }
 

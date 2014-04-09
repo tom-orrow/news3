@@ -10,7 +10,7 @@ html
       = text_field_tag :q, nil, placeholder: 'Search...', id: 'search'
       = link_to '#' do
         span.glyphicon.glyphicon-search
-        .arrow-right
+    = render file: 'devise/sessions/new'
     #wrap
       .container#container
         .row

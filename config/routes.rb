@@ -11,7 +11,7 @@ News3::Application.routes.draw do
   }
 
   root 'articles#index'
-  get 'categories/:category_id' => 'articles#index', as: 'category'
+  get 'categories/:category_id' => 'articles#list', as: 'category'
   resources :articles do
     collection do
       get 'search'
