@@ -6,6 +6,12 @@ fieldset.inputs
   .span9
     b = @article.tags.map(&:name).join(', ')
 
+fieldset.inputs
+  legend
+    span Slug
+  .span9
+    b = @article.slug
+
 #reject_msg_modal.modal.hidden
   .modal-header
     h4 Reject Reason

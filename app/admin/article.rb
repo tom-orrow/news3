@@ -30,6 +30,7 @@ ActiveAdmin.register Article do
     f.inputs 'Details' do
       f.input :categories, include_blank: false
       f.input :tag_list, hint: 'Comma separated'
+      f.input :slug
       f.input :active
     end
     f.actions
@@ -37,11 +38,15 @@ ActiveAdmin.register Article do
 
   controller do
     def permitted_params
-      params.permit article: [:title, :user_id, :description, :body, :tag_list, :active, category_ids: []]
+      params.permit article: [:title, :user_id, :description, :body, :tag_list, :active, :slug, category_ids: []]
     end
 
     def scoped_collection
       Article.includes(:user, :categories)
+    end
+
+    def find_resource
+      scoped_collection.where(slug: params[:id]).first!
     end
   end
 end
