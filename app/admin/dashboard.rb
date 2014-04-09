@@ -5,7 +5,7 @@ ActiveAdmin.register_page 'Dashboard' do
     columns do
       column do
         panel 'Recent Articles' do
-          table_for Article.active.limit(5).order('updated_at DESC') do
+          table_for Article.active.limit(5).order('updated_at DESC').includes(:user) do
             column('User')       { |article| article.user.email }
             column('Title')      { |article| link_to(article.title, admin_article_path(article)) }
             column('Updated At') { |article| article.updated_at }

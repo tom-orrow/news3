@@ -46,7 +46,7 @@ class Article < ActiveRecord::Base
   private
 
   def self.search(params)
-    tire.search(load: true, page: (params[:page] || 1), per_page: self.per_page) do
+    tire.search(load: { include: :user }, page: (params[:page] || 1), per_page: self.per_page) do
       query { string params[:q] } if params[:q].present?
       sort { by :updated_at, 'desc' }
       filter :term, active: true

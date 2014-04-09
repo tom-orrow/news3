@@ -1,7 +1,7 @@
 fieldset
   legend
     span = @page_title
-    - if @current_category
+    - if @current_category && current_user
       - if @unsubscribed
         = link_to subscribe_articles_path(@current_category), id: 'subscribe_btn', class: 'pull-right button-blue'
           i.icon-check

@@ -39,5 +39,9 @@ ActiveAdmin.register Article do
     def permitted_params
       params.permit article: [:title, :user_id, :description, :body, :tag_list, :active, category_ids: []]
     end
+
+    def scoped_collection
+      Article.includes(:user, :categories)
+    end
   end
 end

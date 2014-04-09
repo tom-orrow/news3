@@ -3,9 +3,9 @@ class ArticlesController < ApplicationController
   load_and_authorize_resource only: [:new, :create, :destroy]
 
   def index
-    @articles = Article.by_category(@current_category).active.paginate(page: params[:page])
+    @articles = Article.by_category(@current_category).active.paginate(page: params[:page]).includes(:user)
     @page_title = @current_category ? 'Category: ' << @categories_list.find(@current_category).name : 'New Articles'
-    @unsubscribed = current_user.categories.exists?(@current_category).nil? if @current_category
+    @unsubscribed = current_user.categories.exists?(@current_category).nil? if @current_category && current_user
   end
 
   def search
@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.friendly.find(params[:id])
-    @comments = @article.comments.roots
+    @comments = @article.comments.roots.includes(:user)
     @comment = @article.comments.build(parent_id: params[:parent_id])
     render :index if @article.nil?
   end
