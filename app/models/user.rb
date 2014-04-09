@@ -40,6 +40,6 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome_message
-    UserMailer.welcome_message(self).deliver
+    UserMailer.delay.welcome_message(self)
   end
 end

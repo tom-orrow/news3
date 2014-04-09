@@ -27,11 +27,11 @@ class Article < ActiveRecord::Base
   scope :active, -> { where(active: true) }
 
   def send_article_confirmed_message
-    ArticleMailer.article_confirmed_message(self).deliver
+    ArticleMailer.delay.article_confirmed_message(self)
   end
 
   def send_article_rejected_message(reason)
-    ArticleMailer.article_rejected_message(self, reason).deliver
+    ArticleMailer.delay.article_rejected_message(self, reason)
   end
 
   def send_notification_to_subscribers
@@ -39,7 +39,7 @@ class Article < ActiveRecord::Base
     categories = self.categories.each do |category|
       subscribers = category.users - checked_subscribers
       checked_subscribers << subscribers
-      ArticleMailer.new_article_message(self, category, subscribers).deliver
+      subscribers.each { |subscriber| ArticleMailer.delay.new_article_message(self, category, subscriber) }
     end
   end
 
