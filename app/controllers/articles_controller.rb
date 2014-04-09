@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  load_and_authorize_resource except: [:index, :show, :search], through: :current_user
+  load_and_authorize_resource except: [:index, :show, :search]
 
   def index
     @articles = Article.by_category(@current_category).active.paginate(page: params[:page])
@@ -35,6 +35,13 @@ class ArticlesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    render json: { success: true }
   end
 
   private

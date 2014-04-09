@@ -28,6 +28,7 @@ gem 'jquery-rails'
 gem 'redactor-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'jbuilder', '~> 1.2'
+gem 'compass-rails'
 
 # DB
 gem 'pg'

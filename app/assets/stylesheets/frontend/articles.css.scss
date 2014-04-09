@@ -1,13 +1,5 @@
-.article {
-  background: #fbfbfb;
-  margin-bottom: 20px;
-  border: 1px solid #efefef;
-  border-bottom: 0px;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-}
-
 // Index page
-.span5.article {
+.span5.content-box {
   width: 390px;
   .article-heading {
     border-bottom: 1px solid #d3d3d3;
@@ -44,7 +36,7 @@
   }
 }
 
-.span5.article .article-body {
+.span5.content-box .article-body {
   border-top: 1px solid #efefef;
   padding: 15px 25px 25px 25px;
   div {
@@ -55,7 +47,7 @@
 }
 
 // Show page
-.span10.article {
+.span10.content-box {
   #titlepic {
     border-bottom: 1px solid #d3d3d3;
     width: 806px;
@@ -75,7 +67,7 @@
 
 // New Article
 #new_article, #restore_password {
-  .article { padding: 20px 40px; }
+  .content-box { padding: 20px 40px; }
   .form-actions {
     border-top: 0;
     margin-top: 0px;

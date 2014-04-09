@@ -1,5 +1,7 @@
 $(document).ready ->
   set_authentication_ajax()
+  set_admin_delete_article_ajax()
+  set_admin_delete_comment_ajax()
   close_alert_on_click()
 
 set_authentication_ajax = () ->
@@ -20,6 +22,14 @@ set_authentication_ajax = () ->
     else
       $('#sign_in_form p.alert').html(data.errors.join('<br />'))
       $('#sign_in_form p.alert').removeClass('hidden')
+
+set_admin_delete_article_ajax = () ->
+  $('div.span5.article .button-delete').bind 'ajax:success', (e, data, status, xhr) ->
+    $(this).parent().parent().remove() if data.success
+
+set_admin_delete_comment_ajax = () ->
+  $('div.comments .button-delete').bind 'ajax:success', (e, data, status, xhr) ->
+    $(this).parent().parent().parent().remove() if data.success
 
 close_alert_on_click = () ->
   $('.alert').click () ->

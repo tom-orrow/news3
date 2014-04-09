@@ -2,7 +2,7 @@
   h3 Your search yielded no results
 - else
   - @articles.each do |article|
-    .span5.article
+    .span5.content-box
       .article-heading
         = image_tag article.title_pic.url(:thumb)
         = link_to article_path(article) do
@@ -16,5 +16,7 @@
         p
           = article.description
         = link_to 'Read More', article_path(article), class: 'button-blue small'
+        - if current_user && current_user.role?(:admin)
+          = link_to 'Delete', article_path(article.id), class: 'button-delete small', method: :delete, remote: true
   .span10
     = will_paginate @articles, renderer: 'BootstrapPaginationHelper::LinkRenderer'

@@ -1,6 +1,6 @@
 .span10#new_article
   = form_for @article, url: articles_path, method: :post, html: { multipart: true, class: 'form-horizontal' } do |f|
-    .article
+    .content-box
       fieldset
         legend New Article
         - @article.errors.any?

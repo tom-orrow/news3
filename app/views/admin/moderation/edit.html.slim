@@ -2,7 +2,7 @@
   fieldset.inputs
     legend
       span Index Page
-    .span5.article
+    .span5.content-box
       .article-heading
         = image_tag @article.title_pic.url(:thumb)
         = link_to '#' do
@@ -21,7 +21,7 @@
       span Show Page
     .span9
       .row-fluid
-        .span10.article
+        .span10.content-box
           = image_tag @article.title_pic.url
           .article-heading
             h2 = @article.title

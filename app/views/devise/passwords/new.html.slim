@@ -1,6 +1,6 @@
 .span10#restore_password
   = form_for resource, as: resource_name, url: password_path(resource_name), method: :post do |f|
-    .article
+    .content-box
       fieldset
         legend Forgot your password?
         - resource.errors.any?
