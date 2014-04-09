@@ -5,7 +5,8 @@
   - @articles.each do |article|
     .span5.content-box
       .article-heading
-        = image_tag article.title_pic.url(:thumb)
+        .titlepic_thumb
+          = image_tag article.title_pic.url(:thumb)
         = link_to article_path(article) do
           span = split_and_wrap_article_title(article.title)
       .article-body
@@ -14,7 +15,7 @@
           b = article.user.fullname
           '  |
           time = article.user.created_at.strftime("%b #{article.user.created_at.day.ordinalize}, %Y")
-        p
+        p.article-description
           = article.description
         = link_to 'Read More', article_path(article), class: 'button-blue small'
         - if current_user && current_user.role?(:admin)

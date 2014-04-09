@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  load_and_authorize_resource except: [:index, :show, :search]
+  load_and_authorize_resource except: [:index, :show, :search, :preview]
 
   def index
     @articles = Article.by_category(@current_category).active.paginate(page: params[:page])
@@ -27,8 +27,15 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def preview
+    params[:article][:user_id] = current_user.id
+    @article = Article.new(article_params)
+    render partial: 'edit', article: @article
+  end
+
   def create
     params[:article][:user_id] = current_user.id
+    params[:article][:active] = true
     @article = Article.new(article_params)
     if @article.save
       redirect_to root_path, notice: 'Article successfully created and is waiting for moderation.'
@@ -52,7 +59,7 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(
-      :title, :user_id, :description, :body, :tag_list, :title_pic, category_ids: []
+      :title, :user_id, :description, :body, :tag_list, :title_pic, :active, category_ids: [],
     )
   end
 end

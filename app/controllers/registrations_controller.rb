@@ -1,5 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   def create
+    params[:user][:fullname] = params[:user][:email] if params[:user][:fullname].nil?
     build_resource(user_params)
     if resource.save
       expire_session_data_after_sign_in!
@@ -15,7 +16,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :fullname)
   end
 
 end

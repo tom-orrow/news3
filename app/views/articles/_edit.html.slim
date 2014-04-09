@@ -1,0 +1,43 @@
+fieldset.inputs
+  legend
+    span Index Page
+  .span5.content-box
+    .article-heading
+      .titlepic_thumb
+        = image_tag @article.title_pic.url(:thumb)
+      = link_to '#' do
+        span = split_and_wrap_article_title(@article.title)
+    .article-body
+      div
+        ' By
+        b = @article.user.fullname
+        '  |
+        time = @article.user.created_at.strftime("%b #{@article.user.created_at.day.ordinalize}, %Y")
+      p
+        = @article.description
+
+fieldset.inputs
+  legend
+    span Show Page
+  .span10.content-box
+    .titlepic_original
+      = image_tag @article.title_pic.url
+    .article-heading
+      h2 = @article.title
+      p.article-info
+        span
+          i.icon-user
+          b = @article.user.fullname
+        span
+          i.icon-calendar
+          b = @article.user.created_at.strftime("%B #{@article.user.created_at.day.ordinalize}, %Y")
+        span
+          i.icon-comment
+          b = pluralize(@article.comments.count, 'Comment', 'Comments')
+    .article-body
+      p = raw @article.body
+fieldset.inputs
+  legend
+    span Tags
+  .span9
+    b = @article.tags.map(&:name).join(', ')

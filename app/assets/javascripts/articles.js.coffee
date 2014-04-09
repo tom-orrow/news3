@@ -2,6 +2,7 @@ $(document).ready ->
   set_authentication_ajax()
   set_admin_delete_article_ajax()
   set_admin_delete_comment_ajax()
+  set_article_preview_ajax()
   close_alert_on_click()
   set_focus()
 
@@ -27,6 +28,62 @@ set_authentication_ajax = () ->
     else
       $('#sign_in_form p.alert').html(data.errors.join('<br />'))
       $('#sign_in_form p.alert').removeClass('hidden')
+
+set_article_preview_ajax = () ->
+  $('#new_article a#preview_article_btn').click (event) ->
+    event.preventDefault()
+    $.post($(this).attr('href'), $('#new_article form').serialize(), (data) ->
+      $('.content-box').addClass('hidden')
+      $('#preview_article_btn').addClass('hidden')
+      $('#cancel_btn').addClass('hidden')
+      $('#submit_article_btn').removeClass('hidden')
+      $('#edit_article_btn').removeClass('hidden')
+      $('#preview_article').html(data)
+      title_pic = document.getElementById('article_title_pic').files
+      if title_pic != undefined && title_pic.length > 0
+        title_pic = title_pic[0]
+        reader = new FileReader();
+        reader.onload = (event) ->
+          image = new Image()
+          image.src = event.target.result
+          image.onload = () ->
+
+            $('div.titlepic_thumb img').attr('src', event.target.result)
+            height_bigger_then_width = this.width / $('div.titlepic_thumb').width() <= this.height / $('div.titlepic_thumb').height()
+            $('div.titlepic_thumb img').css {
+              position: 'absolute',
+              'max-width': `height_bigger_then_width ? '100%' : 'none'`,
+              'max-height': `height_bigger_then_width ? 'none' : '100%'`,
+            }
+            $('div.titlepic_thumb img').css {
+              marginTop: '-' + Math.round(($('div.titlepic_thumb img').height() - $('div.titlepic_thumb').height()) / 2) + 'px',
+              marginLeft: '-' + Math.round(($('div.titlepic_thumb img').width() - $('div.titlepic_thumb').width()) / 2) + 'px'
+            }
+
+            height_bigger_then_width = this.width / $('div.titlepic_original').width() <= this.height / $('div.titlepic_original').height()
+            $('div.titlepic_original img').attr('src', event.target.result)
+            $('div.titlepic_original img').css {
+              position: 'absolute',
+              'max-width': `height_bigger_then_width ? '100%' : 'none'`,
+              'max-height': `height_bigger_then_width ? 'none' : '100%'`,
+            }
+            $('div.titlepic_original img').css {
+              marginTop: '-' + Math.round(($('div.titlepic_original img').height() - $('div.titlepic_original').height()) / 2) + 'px',
+              marginLeft: '-' + Math.round(($('div.titlepic_original img').width() - $('div.titlepic_original').width()) / 2) + 'px'
+            }
+
+            $("html, body").animate({scrollTop: 0}, 100);
+        reader.readAsDataURL(title_pic);
+    )
+  $('#new_article a#edit_article_btn').click (event) ->
+    event.preventDefault()
+    $('.content-box').removeClass('hidden')
+    $('#preview_article_btn').removeClass('hidden')
+    $('#cancel_btn').removeClass('hidden')
+    $('#submit_article_btn').addClass('hidden')
+    $('#edit_article_btn').addClass('hidden')
+    $('#preview_article').html('')
+    $("html, body").animate({scrollTop: 0}, 100);
 
 set_admin_delete_article_ajax = () ->
   $('div.span5.content-box .button-delete').bind 'ajax:success', (e, data, status, xhr) ->

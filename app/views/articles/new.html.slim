@@ -1,3 +1,4 @@
+#preview_article
 .span10#new_article
   = form_for @article, url: articles_path, method: :post, html: { multipart: true, class: 'form-horizontal' } do |f|
     .content-box
@@ -33,5 +34,7 @@
           .controls
             = f.text_field :tag_list, placeholder: 'Tags (separated by commas)', class: 'span12'
     .form-actions.pull-right
-      = f.button 'Create Article', class: 'button-blue', type: 'submit'
-      = link_to 'Cancel', '/', class: 'button-cancel'
+      = f.button 'Create Article', class: 'button-blue hidden', type: 'submit', id: 'submit_article_btn'
+      = link_to 'Preview', preview_articles_path, id: 'preview_article_btn', class: 'button-blue'
+      = link_to 'Edit', '#', class: 'button-cancel hidden', id: 'edit_article_btn'
+      = link_to 'Cancel', '/', class: 'button-cancel', id: 'cancel_btn'

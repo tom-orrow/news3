@@ -12,6 +12,7 @@ News3::Application.routes.draw do
   get 'categories/:category_id' => 'articles#index', as: 'category'
   resources :articles do
     get 'search', on: :collection
+    post 'preview', on: :collection
     resources :comments, only: [:create, :destroy]
   end
 end

@@ -9,18 +9,23 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :category
   has_many :comments, dependent: :destroy
-  has_attached_file :title_pic, styles: { original: '', thumb: '' },
+  has_attached_file :title_pic, styles: { medium: '', thumb: '' },
     default_url: '/assets/articles/:style/missing_titlepic.jpg',
+    default_style: :medium,
     convert_options: {
-      thumb:  '-gravity center -resize 390x250^ -crop 390x250+0+0 -blur 0x2',
-      original: '-gravity center -resize 806x400^ -crop 806x400+0+0'
+      thumb:  '-gravity center -resize 390x250^ -crop 390x250+0+0',
+      medium: '-gravity center -resize 806x400^ -crop 806x400+0+0'
     }
   acts_as_taggable
 
   # Validations
   validates :title, :description, presence: true
+  validates :description, length: { minimum: 15, maximum: 130 }
   validates :user_id, numericality: true
   validate :require_at_least_one_category
+
+  # Callbacks
+  after_save :reprocess_titlepic
 
   # Scopes
   scope :inactive, -> { where(active: false) }
@@ -45,4 +50,13 @@ class Article < ActiveRecord::Base
   def require_at_least_one_category
     errors.add :base, 'Article requires at least one category selected.' if category.blank?
   end
+
+  def reprocess_titlepic
+    if self.title_pic.present? && Pathname.new(self.title_pic.path).exist?
+      self.title_pic.save
+      dirname, _ = File.split(self.title_pic.path(:original))
+      FileUtils.rm_rf(dirname)
+    end
+  end
+
 end
