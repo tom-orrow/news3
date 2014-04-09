@@ -2,8 +2,10 @@
  *= require redactor-rails
  */
 
-@import "bourbon";
+@import "compass";
+@import "compass/layout";
 @import "frontend/layout";
 @import "frontend/articles";
 @import "frontend/comments";
 @import "frontend/bootstrap_and_overrides";
+

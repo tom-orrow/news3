@@ -28,7 +28,7 @@ gem 'jquery-rails'
 gem 'redactor-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'jbuilder', '~> 1.2'
-gem 'compass-rails'
+gem 'compass-rails', "~> 2.0.alpha.0"
 
 # DB
 gem 'pg'

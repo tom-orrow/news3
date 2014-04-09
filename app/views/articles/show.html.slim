@@ -8,7 +8,7 @@
         b = @article.user.fullname
       span
         i.icon-calendar
-        time = @article.user.created_at.strftime("%B #{@article.user.created_at.day.ordinalize}, %Y")
+        b = @article.user.created_at.strftime("%B #{@article.user.created_at.day.ordinalize}, %Y")
       span
         i.icon-comment
         b = link_to pluralize(@article.comments.count, 'Comment', 'Comments'), '#comments'
@@ -20,12 +20,11 @@
     .comments-heading
       a name='comments'
         .anchor
-      h2 Comments &amp; Discussion
-      h3
-        span = pluralize(@article.comments.count, 'Comment', 'Comments')
+      h2#comments_title Comments &amp; Discussion
+      h2#comments_count = pluralize(@article.comments.count, 'Comment', 'Comments')
     .comments-body
       = nested_comments @comments.arrange(order: :created_at)
-      hr
+
       = form_for [@article, @comment] do |f|
         = f.hidden_field :parent_id
         = f.hidden_field :article_id
@@ -33,6 +32,7 @@
           a name='new_comment'
             .anchor
           h2 Add Comment
+          = image_tag 'empty_userpic.png', class: 'avatar'
           = f.text_area :content, rows: 4
           p.actions
             = f.submit 'Post Comment', id: 'submit_comment', class: 'button-blue'

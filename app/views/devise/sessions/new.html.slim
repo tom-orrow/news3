@@ -26,7 +26,7 @@
           hr
           .control-group
             .controls
-              = button_tag 'Sign In', type: 'submit', class: 'btn btn-success'
+              = button_tag 'Sign In', type: 'submit', class: 'button-blue'
         - if devise_mapping.recoverable? || %w(passwords registrations).include?(controller_name)
           = link_to 'Forgot your password?', new_password_path(resource_name), id: 'password_recover_link'
       .span5
