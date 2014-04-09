@@ -6,11 +6,10 @@ News3::Application.routes.draw do
     sessions: 'sessions',
     confirmations: 'confirmations'
   }
-  root "main#index"
+  root "articles#index"
 
-  # resources :main, :only => :none do
-  #   get 'new_session'
-  # end
+  get 'categories/:category_id' => "articles#index", as: 'category'
+  resources :articles
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -12,13 +12,6 @@
             = link_to "Sign In", "#sign_in_form", remote: true, class: "header_nav_btn", data: { toggle: "modal" }
             '  |
             = link_to "Join", "#sign_up_form", remote: true, class: "header_nav_btn", data: { toggle: "modal" }
-        ul.nav
-          li.active
-            = link_to "Home", "/"
-          li
-            = link_to "About", "#about"
-          li
-            = link_to "Contact", "#contact"
 
 = render file: 'devise/sessions/new'
 = render file: 'devise/registrations/new'

@@ -8,9 +8,9 @@ html
   body
     #wrap
       .container-fluid
-        = render 'main/menu/navbar'
+        = render 'menu/navbar'
         .row-fluid.mainbox
-          = render 'main/menu/sidebar'
+          = render 'menu/sidebar'
           .span9
             .row-fluid
               p#flash_notice.alert.alert-success class=("hidden" if notice.nil?)

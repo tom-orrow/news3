@@ -8,6 +8,7 @@ group :development do
   gem "binding_of_caller"
   gem "awesome_print"
   gem 'taps', :require => false
+  gem 'quiet_assets'
 end
 
 group :production do
