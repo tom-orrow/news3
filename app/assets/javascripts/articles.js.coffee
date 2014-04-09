@@ -88,11 +88,18 @@ resize_blocks = () ->
   $('#side_box #related_categories').css(height: fullHeight + 41 + 'px')
 
 show_page_sidebox = () ->
+  scrollOptions = {
+    scrollInertia: 0
+  }
+  $("ul#related_articles").mCustomScrollbar(scrollOptions);
+  $("ul#recent_articles").mCustomScrollbar(scrollOptions);
+
   $(window).scroll (e) ->
     if $(this).scrollTop() > 485 && $('.col-xs-4#side_box').css('position') != 'fixed'
       $('div#side_box').css({'position': 'fixed', 'top': '51px'})
     else
       $('div#side_box').css({'position': 'absolute', 'top': '0px'})
+
   $('#related_categories ul li').hover () ->
     $(this).addClass('highlight')
   , () ->
@@ -104,7 +111,8 @@ show_page_sidebox = () ->
       target = $(this).attr('value')
       $('#side_box #offers ul').hide()
       $('#side_box #offers ul#' + target).show()
-
+      $('#side_box #offers ul#' + target).mCustomScrollbar("update")
+      $('#side_box #offers ul#' + target).mCustomScrollbar("scrollTo", "top")
 
 set_authentication_ajax = () ->
   $('#sign_in_form ul.nav.nav-tabs li a').click () ->
