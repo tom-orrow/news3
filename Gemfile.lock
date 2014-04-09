@@ -34,6 +34,17 @@ GIT
       activerecord (~> 4.0.0)
 
 GIT
+  remote: git://github.com/pat/thinking-sphinx.git
+  revision: 337c6ae5ccfea3188b0b485f0aa88295359319a8
+  specs:
+    thinking-sphinx (3.0.6)
+      activerecord (>= 3.1.0)
+      builder (>= 2.1.2)
+      innertube (>= 1.0.2)
+      middleware (>= 0.1.0)
+      riddle (>= 1.5.9)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: b4ec5166978a0b6ba1596827428fb2e4ffd9565d
   specs:
@@ -74,7 +85,6 @@ GEM
       rails (>= 3, < 5)
     ancestry (2.0.0)
       activerecord (>= 3.0.0)
-    ansi (1.4.3)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (4.0.0)
@@ -148,13 +158,13 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hashie (2.0.5)
-    hashr (0.0.22)
     hike (1.2.3)
     httpauth (0.2.0)
     i18n (0.6.5)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
+    innertube (1.1.0)
     jbuilder (1.5.1)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -174,6 +184,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    middleware (0.1.0)
     mime-types (1.25)
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
@@ -181,6 +192,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.0)
     multipart-post (1.2.0)
+    mysql2 (0.3.13)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
@@ -245,6 +257,7 @@ GEM
       railties (>= 3.2, < 5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    riddle (1.5.9)
     ruby-hmac (0.4.0)
     sass (3.2.10)
     sass-rails (4.0.0)
@@ -284,14 +297,6 @@ GEM
       atomic
     tilt (1.4.1)
     timers (1.1.0)
-    tire (0.6.0)
-      activemodel (>= 3.0)
-      activesupport
-      ansi
-      hashr (~> 0.0.19)
-      multi_json (~> 1.3)
-      rake
-      rest-client (~> 1.6)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -331,6 +336,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   mini_magick
+  mysql2
   newrelic_rpm
   omniauth
   omniauth-facebook
@@ -344,7 +350,7 @@ DEPENDENCIES
   sidekiq
   slim
   taps
-  tire
+  thinking-sphinx!
   twitter-bootstrap-rails!
   uglifier (>= 1.3.0)
   unicorn

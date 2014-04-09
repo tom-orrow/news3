@@ -17,6 +17,11 @@
   .article-body
     p = raw @article.body
 
+  .article-tags
+    i.icon-tags
+    - @article.tags.each do |tag|
+      b = link_to tag.name, search_articles_path(tag: tag.name)
+
   .comments
     .comments-heading
       a name='comments'

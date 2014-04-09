@@ -6,6 +6,7 @@ class CreateArticles < ActiveRecord::Migration
       t.text :body
       t.boolean :active, null: false, default: false
       t.string :slug
+      t.boolean :delta, default: true, null: false
       t.string :title_pic
       t.belongs_to :user
 

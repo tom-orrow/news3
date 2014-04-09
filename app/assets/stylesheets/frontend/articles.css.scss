@@ -96,14 +96,21 @@ $meta-color: #A8A7A7;
       margin-right: 8px;
       @include adjust-font-size-to(20px);
     }
-    b {
-      @include adjust-font-size-to(15px);
-    }
+    b { @include adjust-font-size-to(15px); }
     span { padding-right: 40px; }
   }
   .article-body {
     color: $base-text-color;
     padding: 0px 40px 60px;
+  }
+  .article-tags {
+    i { margin-right: 8px; }
+    b {
+      @include adjust-font-size-to(15px);
+      color: $base-text-color;
+      padding-right: 5px;
+    }
+    padding: 0px 40px 15px;
   }
 }
 

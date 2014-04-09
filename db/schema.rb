@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20131015181803) do
     t.text     "body"
     t.boolean  "active",      default: false, null: false
     t.string   "slug"
+    t.boolean  "delta",       default: true,  null: false
     t.string   "title_pic"
     t.integer  "user_id"
     t.datetime "created_at"

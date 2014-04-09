@@ -1,6 +1,5 @@
 class Article < ActiveRecord::Base
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
+  include ThinkingSphinx::Scopes
   extend FriendlyId
 
   friendly_id :title, use: :slugged
@@ -44,14 +43,6 @@ class Article < ActiveRecord::Base
   end
 
   private
-
-  def self.search(params)
-    tire.search(load: { include: :user }, page: (params[:page] || 1), per_page: self.per_page) do
-      query { string params[:q] } if params[:q].present?
-      sort { by :updated_at, 'desc' }
-      filter :term, active: true
-    end
-  end
 
   # HACK: Use category.find() instead
   def self.by_category(category_id)

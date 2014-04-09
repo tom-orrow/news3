@@ -34,6 +34,7 @@ gem 'mini_magick'
 
 # DB
 gem 'pg'
+gem 'mysql2'
 
 # OmniAuth
 gem 'omniauth'
@@ -49,6 +50,6 @@ gem "cancan"
 gem 'acts-as-taggable-on'
 gem 'devise'
 gem 'devise-async'
+gem 'thinking-sphinx', github: 'pat/thinking-sphinx'
 gem 'friendly_id', github: 'norman/friendly_id'
-gem 'tire'
 gem 'newrelic_rpm'
