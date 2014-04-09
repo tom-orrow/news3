@@ -25,7 +25,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '>= 1.3.0'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
 gem 'jquery-rails'
-gem 'redactor-rails'
+gem 'redactor-rails', github: 'SammyLin/redactor-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'jbuilder', '~> 1.2'
 gem 'compass-rails', "~> 2.0.alpha.0"
