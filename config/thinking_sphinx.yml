@@ -1,3 +1,0 @@
-production:
-  pid_file: /news3/shared/tmp/searchd.pid
-  indices_location: /news3/shared/db/sphinx

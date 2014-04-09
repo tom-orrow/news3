@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20131015181803) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "delta",       default: true,  null: false
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree

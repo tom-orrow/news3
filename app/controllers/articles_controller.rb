@@ -9,15 +9,11 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = Article.search(
-      params[:q],
-      page: params[:page],
-      per_page: Article.per_page,
-      field_weight: { title: 20 },
-      with: { active: true }
-    )
-    @page_title = "Search Results: #{pluralize(@articles.count, 'Article', 'Articles')} Found"
+    @articles = Article.search(params)
+    @page_title = "Search Results: #{pluralize(@articles.total, 'Article', 'Articles')} Found"
     render :index
+  rescue Tire::Search::SearchRequestFailed
+    redirect_to root_url, alert: "Sorry, your query '#{params[:q]}' is invalid."
   end
 
   def subscribe
