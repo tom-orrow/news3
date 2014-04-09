@@ -14,6 +14,7 @@ end
 
 group :production do
   gem 'fog'
+  gem 'flying-sphinx', github: 'flying-sphinx/flying-sphinx'
 end
 
 # Assets
