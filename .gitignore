@@ -17,3 +17,7 @@
 
 # Ignore OmniAuth secrets.
 /config/omniauth/secrets.yml
+
+# Ignore Public Images
+/public/system/*
+!.keep

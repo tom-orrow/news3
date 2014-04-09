@@ -1,0 +1,19 @@
+.media-body
+  a name=("comment_#{comment.id}")
+    .anchor
+  = image_tag 'empty_userpic.png', class: 'avatar'
+  - if comment.user.nil?
+    h4 Guest
+  - else
+    h4 = comment.user.fullname
+  .comment-meta
+    span.right-border
+      i.icon-calendar
+      time = comment.created_at.strftime("%B #{comment.created_at.day.ordinalize}, %Y")
+    span
+      i.icon-time
+      time = comment.created_at.strftime('%R')
+  p = simple_format comment.content
+  .actions
+    = link_to 'Reply', '#new_comment', onclick: "reply_comment(#{comment.id}, this)", class: 'button-blue small'
+= nested_comments comment.children.arrange(order: :created_at)

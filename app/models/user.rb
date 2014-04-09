@@ -1,22 +1,26 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable
-  devise :database_authenticatable, :registerable, :async,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
-         :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :vkontakte, :twitter]
-
-  validates_inclusion_of :role, in: ['admin', 'moderator', '']
-  attr_accessible :email, :password, :password_confirmation, :fullname, :role
-  has_many :services
 
   ROLES = %w(admin moderator)
 
+  # Associations
+  has_many :services, dependent: :destroy
+  has_many :articles, dependent: :destroy
+
+  # Validations
+  validates :role, inclusion: ['admin', 'moderator', '']
+
+  # Devise. Other options: :lockable, :timeoutable
+  devise :database_authenticatable, :registerable, :async,
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+
   def role?(base_role)
-    return false unless role.present? # A user have a role attribute. If not set, the user does not have any roles.
-    ROLES.index(base_role.to_s) <= ROLES.index(role)
+    return false unless role.present?
+    ROLES.index(base_role.to_s) >= ROLES.index(role)
   end
 
-  def self.create_user(auth)
+  # Create user authorized through OmniAuth
+  def self.create_user_from_omniauth(auth)
     user = User.new(
       fullname: auth.extra.raw_info.name,
       email: auth.info.email,
@@ -24,7 +28,7 @@ class User < ActiveRecord::Base
     )
     user.skip_confirmation!
     user.save!
-    user.send_welcome_message unless user.invalid?
+    user.send_welcome_message if user.valid?
     user
   end
 

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: ac4918ef99cf0272eb5f744b7e3f3fc7cde5811f
+  revision: 85b9f816480988bf00aa142c9638b5212b51113a
   branch: rails4
   specs:
     activeadmin (0.6.0)
@@ -18,8 +18,19 @@ GIT
       sass-rails (>= 3.2.0)
 
 GIT
+  remote: git://github.com/pat/thinking-sphinx.git
+  revision: 4a7c7026032fc5a7e5c1cad52e55a4168e20c0ee
+  specs:
+    thinking-sphinx (3.0.5)
+      activerecord (>= 3.1.0)
+      builder (>= 2.1.2)
+      innertube (>= 1.0.2)
+      middleware (>= 0.1.0)
+      riddle (>= 1.5.8)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 40ffd567ee6bea9974710c58646d309d6a95faaf
+  revision: b4ec5166978a0b6ba1596827428fb2e4ffd9565d
   specs:
     twitter-bootstrap-rails (2.2.8)
       actionpack (>= 3.1)
@@ -54,6 +65,10 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    acts-as-taggable-on (2.4.1)
+      rails (>= 3, < 5)
+    ancestry (2.0.0)
+      activerecord (>= 3.0.0)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (4.0.0)
@@ -69,9 +84,15 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.1.4)
+    bullet (4.6.0)
+      uniform_notifier
     cancan (1.6.10)
     celluloid (0.15.1)
       timers (~> 1.1.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.2)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -119,6 +140,7 @@ GEM
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
+    innertube (1.1.0)
     jbuilder (1.5.1)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -139,14 +161,16 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    middleware (0.1.0)
     mime-types (1.25)
     mini_portile (0.5.1)
     minitest (4.7.5)
     multi_json (1.8.0)
     multipart-post (1.2.0)
+    mysql2 (0.3.13)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
-    net-ssh (2.6.8)
+    net-ssh (2.7.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
@@ -167,12 +191,15 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     orm_adapter (0.4.0)
-    pg (0.16.0)
+    paperclip (3.5.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.0)
+      mime-types
+    pg (0.17.0)
     polyamorous (0.6.4)
       activerecord (>= 3.0)
     polyglot (0.3.3)
-    protected_attributes (1.0.3)
-      activemodel (>= 4.0.0, < 5.0)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -197,14 +224,19 @@ GEM
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
+    redactor-rails (0.4)
+      devise
+      mime-types
+      orm_adapter
     redis (3.0.4)
     redis-namespace (1.3.1)
       redis (~> 3.0.0)
     ref (1.0.5)
-    responders (1.0.0.rc)
+    responders (1.0.0)
       railties (>= 3.2, < 5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    riddle (1.5.8)
     ruby-hmac (0.4.0)
     sass (3.2.10)
     sass-rails (4.0.0)
@@ -257,17 +289,22 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.3.0)
     warden (1.2.3)
       rack (>= 1.0)
+    will_paginate (3.0.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   activeadmin!
+  acts-as-taggable-on
+  ancestry
   awesome_print
   better_errors
   binding_of_caller
+  bullet
   cancan
   coffee-rails (~> 4.0.0)
   dalli
@@ -276,18 +313,22 @@ DEPENDENCIES
   fog
   jbuilder (~> 1.2)
   jquery-rails
+  mysql2
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
+  paperclip
   pg
-  protected_attributes
   quiet_assets
   rails (= 4.0.0)
+  redactor-rails
   sass-rails (~> 4.0.0)
   sidekiq
   slim
   taps
   therubyracer
+  thinking-sphinx!
   twitter-bootstrap-rails!
   uglifier (>= 1.3.0)
   unicorn
+  will_paginate (~> 3.0)

@@ -79,6 +79,6 @@ News3::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Gem Devise
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
 end

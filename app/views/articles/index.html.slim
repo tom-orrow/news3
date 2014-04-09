@@ -1,19 +1,20 @@
-- @articles.each do |article|
-  .span10.article
-    .article-heading
-      h2 = article.title
-      h3
-        em
-          ' by
-        = link_to article.user.email, "#"
-        em
-          '  on
-        = article.user.created_at.to_date
-        em
-          '  with
-        = link_to "0 Comments", "#comments"
-
-    .article-body
-      p
-        = article.description
-        = link_to '»»', article_path(article)
+- if @articles.empty?
+  h3 Your search yielded no results
+- else
+  - @articles.each do |article|
+    .span5.article
+      .article-heading
+        = image_tag article.title_pic.url(:thumb)
+        = link_to article_path(article) do
+          span = split_and_wrap_article_title(article.title)
+      .article-body
+        div
+          ' By
+          b = article.user.fullname
+          '  |
+          time = article.user.created_at.strftime("%b #{article.user.created_at.day.ordinalize}, %Y")
+        p
+          = article.description
+        = link_to 'Read More', article_path(article), class: 'button-blue small'
+  .span10
+    = will_paginate @articles, renderer: 'BootstrapPaginationHelper::LinkRenderer'

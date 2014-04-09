@@ -11,7 +11,7 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "Admin Details for #{user.email}" do
-      f.input :role, as: :select, collection: [["Admin", "admin"], ["Moderator", "moderator"], ['', nil]],
+      f.input :role, as: :select, collection: [['Admin', 'admin'], ['Moderator', 'moderator'], ['', nil]],
               include_blank: false
     end
     f.actions

@@ -7,7 +7,6 @@ class CreateArticles < ActiveRecord::Migration
       t.boolean :active, null: false, default: false
 
       t.belongs_to :user
-      t.belongs_to :category
 
       t.timestamps
     end

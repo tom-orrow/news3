@@ -5,11 +5,10 @@ class Ability
     if user.role? :admin
       can :manage, :all
     else
-      can :read, Post
+      can :create, Article
 
       if user.role? :moderator
-        can :manage, ActiveAdmin::Page, name: "Dashboard"
-        can :manage, Post
+        can :manage, ActiveAdmin::Page, name: 'Moderation'
       end
     end
   end

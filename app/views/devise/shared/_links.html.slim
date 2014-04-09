@@ -2,11 +2,11 @@
   ul.nav.nav-pills
     - resource_class.omniauth_providers.each do |provider|
       - case provider.to_s
-        - when 'facebook'
+      - when 'facebook'
         li
           = link_to omniauth_authorize_path(resource_name, provider) do
-            = image_tag("social_media_icons/facebook.png")
-        - when 'google_oauth2'
+            = image_tag('social_media_icons/facebook.png')
+      - when 'google_oauth2'
         li
           = link_to omniauth_authorize_path(resource_name, provider) do
-            = image_tag("social_media_icons/google.png")
+            = image_tag('social_media_icons/google.png')

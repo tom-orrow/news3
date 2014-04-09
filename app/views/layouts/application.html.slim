@@ -2,8 +2,8 @@ doctype html
 html
   head
     title News3
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
     #wrap
@@ -13,9 +13,9 @@ html
           = render 'menu/sidebar'
           .span9
             .row-fluid
-              p#flash_notice.alert.alert-success class=("hidden" if notice.nil?)
+              p#flash_notice.alert.alert-success class=('hidden' if notice.nil?)
                 = notice
-              p#flash_error.alert.alert-error class=("hidden" if alert.nil?)
+              p#flash_error.alert.alert-error class=('hidden' if alert.nil?)
                 = alert
               == yield
       #push

@@ -4,38 +4,48 @@ gem 'rails', '4.0.0'
 ruby '2.0.0'
 
 group :development do
-  gem "better_errors"
-  gem "binding_of_caller"
-  gem "awesome_print"
-  gem 'taps', :require => false
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'awesome_print'
+  gem 'taps', require: false
   gem 'quiet_assets'
+  gem 'bullet'
 end
 
 group :production do
   gem 'fog'
 end
 
-gem 'unicorn'
-gem 'sidekiq'
-gem 'pg'
-
+# Assets
 gem 'dalli'
 gem 'slim'
 gem 'sass-rails', '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'therubyracer', :platforms => :ruby
+gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '>= 1.3.0'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
 gem 'jquery-rails'
+gem 'redactor-rails'
+gem 'will_paginate', '~> 3.0'
+gem 'jbuilder', '~> 1.2'
 
+# DB
+gem 'pg'
+gem 'mysql2'
+
+# OmniAuth
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
-gem 'jbuilder', '~> 1.2'
+# Other
+gem 'unicorn'
+gem 'sidekiq'
+gem 'ancestry'
+gem 'paperclip'
 gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
 gem "cancan"
+gem 'acts-as-taggable-on'
 gem 'devise'
 gem 'devise-async'
-gem 'protected_attributes'
-
+gem 'thinking-sphinx', github: 'pat/thinking-sphinx'

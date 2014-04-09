@@ -1,7 +1,9 @@
 class Service < ActiveRecord::Base
-  attr_accessible :provider, :uid, :uname, :user_id
-  validates :user_id, :provider, :uid, presence: true
+  # Associations
   belongs_to :user
+
+  # Validations
+  validates :user_id, :provider, :uid, presence: true
 
   def self.create_service(auth, user_id)
     Service.create(
@@ -19,20 +21,21 @@ class Service < ActiveRecord::Base
   end
 
   def self.find_for_oauth(auth)
-    service = Service.where(:provider => auth.provider, :uid => auth.uid).first
+    service = Service.where(provider: auth.provider, uid: auth.uid).first
 
-    unless service
+    if service
+      user = service.user
+    else
       user = self.find_user_by_email_duplication(auth)
       unless user
+
+        # FIXME: Looks like transaction does not work as I thought
         transaction do
-          user = User.create_user(auth)
+          user = User.create_user_from_omniauth(auth)
           self.create_service(auth, user.id)
         end
       end
-    else
-      user = service.user
     end
     user
   end
-
 end

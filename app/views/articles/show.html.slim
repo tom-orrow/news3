@@ -1,24 +1,41 @@
 .span10.article
+  = image_tag @article.title_pic.url, id: 'titlepic'
   .article-heading
     h2 = @article.title
-    h3
-      em
-        ' by
-      = link_to @article.user.email, "#"
-      em
-        '  on
-      = @article.user.created_at.to_date
-      em
-        '  with
-      = link_to "0 Comments", "#comments"
+    p.article-info
+      span
+        i.icon-user
+        b = @article.user.fullname
+      span
+        i.icon-calendar
+        time = @article.user.created_at.strftime("%B #{@article.user.created_at.day.ordinalize}, %Y")
+      span
+        i.icon-comment
+        b = link_to pluralize(@article.comments.count, 'Comment', 'Comments'), '#comments'
 
   .article-body
-    p = @article.body
+    p = raw @article.body
 
   .comments
     .comments-heading
+      a name='comments'
+        .anchor
       h2 Comments &amp; Discussion
       h3
-        span 0 Comments
+        span = pluralize(@article.comments.count, 'Comment', 'Comments')
     .comments-body
+      = nested_comments @comments.arrange(order: :created_at)
+      hr
+      = form_for [@article, @comment] do |f|
+        = f.hidden_field :parent_id
+        = f.hidden_field :article_id
+        p
+          a name='new_comment'
+            .anchor
+          h2 Add Comment
+          = f.text_area :content, rows: 4
+          p.actions
+            = f.submit 'Post Comment', id: 'submit_comment', class: 'button-blue'
+            = f.button 'Cancel', id: 'reset_reply', class: 'button-cancel', type: 'reset', \
+              onclick: 'empty_comment_parent_on_click()'
 

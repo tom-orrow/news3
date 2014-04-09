@@ -17,7 +17,7 @@ News3::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.default charset: "utf-8"
 
   # Turn off auto TLS for e-mail
   ActionMailer::Base.smtp_settings[:enable_starttls_auto] = false
@@ -34,9 +34,12 @@ News3::Application.configure do
   config.assets.debug = true
 
   # Gem Devise
-  config.action_mailer.default_url_options = { :host => 'localhost:8080' }
+  config.action_mailer.default_url_options = { host: 'localhost:8080' }
 
   # It will manage cache for us with memcached
   config.cache_store = :dalli_store
+
+  # Serving static assets
+  config.serve_static_assets = true
 
 end

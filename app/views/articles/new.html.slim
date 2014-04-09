@@ -1,19 +1,27 @@
 .span10#new_article
-  = form_for Article.new, url: articles_path, method: 'POST' do |f|
+  = form_for @article, url: articles_path, method: :post, html: { multipart: true } do |f|
     .article
       .article-heading
         h2 New Article
       .article-body
+        - @article.errors.any?
+          p#flash_error.alert.alert-error
+            - @article.errors.full_messages.each do |message|
+              = message
+              br
         .control-group
           .controls
-            = f.text_field :title, autofocus: true, placeholder: "Title", class: "span12"
+            = f.text_field :title, autofocus: true, placeholder: 'Title', class: 'span12'
           .controls
-            = f.text_area :description, placeholder: "Description", class: "span12", rows: 4
+            = f.file_field :title_pic
           .controls
-            = f.text_area :body, placeholder: "Text", class: "span12", rows: 10
+            = f.text_area :description, placeholder: 'Description', class: 'span12', rows: 4
+            = f.text_area :body, placeholder: 'Text', id: 'article_body', class: 'span12 redactor', rows: 10
+          .controls.under_redactor
+            = f.select :category_ids, Category.all().map { |c| [c.name, c.id] }, {}, { multiple: true }
           .controls
-            = f.select :category, Category.all().map { |c| c.name }
+            = f.text_field :tag_list, placeholder: 'Tags (separated by commas)', class: 'span12'
 
     .form-actions.pull-right
-          = f.button "Create Article", class: "btn btn-primary", type: "submit"
-          = link_to "Cancel", "/", class: "btn btn-danger"
+          = f.button 'Create Article', class: 'button-blue', type: 'submit'
+          = link_to 'Cancel', '/', class: 'button-cancel'
