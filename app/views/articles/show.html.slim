@@ -1,7 +1,7 @@
 .row.show-content
   .col-xs-12
     #article_top
-      .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .titlepic style='background-image: url("#{@article.title_pic.url(:medium)}")'
       #titlepic_comments_counter
         .hr
         span
@@ -12,10 +12,11 @@
         b#add_comment
           = link_to 'Add Comment +', '#new_comment'
       h1
-        | Gravity Review
+        = @article.title
         .post_date
-          ' 11th December by
-          span Andrey Yuferov
+          = article_date_format(@article)
+          '  by
+          span = @article.user.fullname
     #social_and_tags
       ul#social
         li
@@ -33,24 +34,15 @@
       ul#tags
         li#tags_title
           i.fa.fa-tags
-        li
-          = link_to 'Movies', '#'
-        li
-          = link_to 'Gravity', '#'
-        li
-          = link_to 'Review', '#'
-        li
-          = link_to 'BestFilmEver', '#'
+        - @article.tags.each do |tag|
+          li
+            = link_to tag, '#'
   .col-xs-12
     .row
       .col-xs-8
         #article_content
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
-          p
-            iframe src="//www.youtube.com/embed/OiTiKOy59o4?wmode=opaque" frameborder="0" allowfullscreen
+          = @article.body
+          /iframe src="//www.youtube.com/embed/OiTiKOy59o4?wmode=opaque" frameborder="0" allowfullscreen
 
         #comments
           .comments-heading
@@ -80,37 +72,26 @@
           #offers
             p.offers-title
               | Related Articles
-            ul
-             - 3.times do
+            ul#related_articles
+             - @related_articles.each do |related_article|
                 li
-                  = link_to '#' do
-                    .titlepic style='background-image: url("#{asset_path('test_article_titlepic2.jpg')}")'
-                    | Rush Review
+                  = link_to article_path(related_article) do
+                    .titlepic style='background-image: url("#{related_article.title_pic.url(:thumb)}")'
+                    = related_article.title
+            ul#recent_articles
+             - @related_articles.each do |related_article|
                 li
-
-                  = link_to '#' do
-                    .titlepic style='background-image: url("#{asset_path('test_article_titlepic4.jpg')}")'
-                    | Behind the Candelabra
-                li
-                  = link_to '#' do
-                    .titlepic style='background-image: url("#{asset_path('test_article_titlepic5.jpg')}")'
-                    | Fitbit Ultra - Review
-                li
-                  = link_to '#' do
-                    .titlepic style='background-image: url("#{asset_path('test_article_titlepic6.jpg')}")'
-                    | London: The Modern Babylon - Review
-                li
-                  = link_to '#' do
-                    .titlepic style='background-image: url("#{asset_path('test_article_titlepic7.jpg')}")'
-                    | The Hobbit: The Desolation of Smaug
+                  = link_to article_path(related_article) do
+                    .titlepic style='background-image: url("#{related_article.title_pic.url(:thumb)}")'
+                    = related_article.title
           #related_categories
             ul
-              li.active
+              li.active value='related_articles'
                 i.fa.fa-sitemap
                 | Related
-              li
+              li value='recent_articles'
                 i.fa.fa-clock-o
-                | Latest
+                | Recent
 
 
 

@@ -11,6 +11,7 @@ group :development do
   gem 'quiet_assets'
   gem 'bullet'
   gem 'rails-dev-tweaks'
+  gem 'faker'
 end
 
 group :production do

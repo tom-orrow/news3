@@ -1,0 +1,8 @@
+#index_header_articles
+  - @header_articles.each do |article|
+    .col-xs-4
+      .col-xs-12 style='background-image: url("#{article.title_pic.url(:medium)}")'
+      = link_to '', article_path(article), class: 'wrapper'
+      = link_to article.categories.first.name, category_path(article.categories.first), class: 'category'
+      = link_to "#{article.comments.count} Comments", "#{article_path(article)}#comments", class: 'comments'
+      = link_to article.title, article_path(article), class: 'title'

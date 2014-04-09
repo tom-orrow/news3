@@ -1,5 +1,5 @@
 $(document).ready ->
-  set_index_most_popular_hovering()
+  set_index_header_articles_hovering()
   prepare_navbar()
   prepare_reviews_carousel()
   prepare_autosizing()
@@ -12,14 +12,14 @@ $(document).ready ->
 
   # close_alert_on_click()
 
-set_index_most_popular_hovering = () ->
-  $('#index_most_popular a').hover () ->
+set_index_header_articles_hovering = () ->
+  $('#index_header_articles a').hover () ->
     $(this).parent().toggleClass('highlight')
 
 hoverTimer = null
 navbarShown = false
 prepare_navbar = () ->
-  if $('#index_most_popular').length > 0
+  if $('#index_header_articles').length > 0
     $(window).scroll (e) ->
       if $(this).scrollTop() > 450
         $('#header_navbar').addClass('navbar-fixed-top')
@@ -101,6 +101,9 @@ show_page_sidebox = () ->
     if !$(this).hasClass('active')
       $(this).siblings('li').removeClass('active')
       $(this).addClass('active')
+      target = $(this).attr('value')
+      $('#side_box #offers ul').hide()
+      $('#side_box #offers ul#' + target).show()
 
 
 set_authentication_ajax = () ->

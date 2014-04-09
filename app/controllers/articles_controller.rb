@@ -3,9 +3,8 @@ class ArticlesController < ApplicationController
   load_and_authorize_resource only: [:new, :create, :destroy]
 
   def index
-    @articles = Article.by_category(@current_category).active.paginate(page: params[:page]).includes(:user)
-    @page_title = @current_category ? 'Category: ' << @categories_list.find(@current_category).name : 'New Articles'
-    @unsubscribed = current_user.categories.exists?(@current_category).nil? if @current_category && current_user
+    @articles = Article.active.includes(:user)
+    @header_articles = @articles.shift(5)
   end
 
   def list
@@ -49,6 +48,8 @@ class ArticlesController < ApplicationController
     @article = Article.friendly.find(params[:id])
     @comments = @article.comments.roots.includes(:user)
     @comment = @article.comments.build(parent_id: params[:parent_id])
+    @related_articles = Article.tagged_with(@article.tag_list, any: true).limit(15)
+    @latest_articles = Article.limit(15)
     render :index if @article.nil?
   end
 

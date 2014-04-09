@@ -16,7 +16,7 @@ class Article < ActiveRecord::Base
 
   # Validations
   validates :title, length: { minimum: 15, maximum: 90 }
-  validates :description, length: { minimum: 15, maximum: 130 }
+  validates :description, length: { minimum: 15, maximum: 200 }
   validates :user_id, numericality: true
   validate :require_at_least_one_category
 
