@@ -2,11 +2,12 @@ $(document).ready ->
   set_search_actions()
   show_page_sidebox_sticker()
   set_authentication_ajax()
-  set_admin_delete_article_ajax()
-  set_admin_delete_comment_ajax()
-  set_article_preview_ajax()
-  close_alert_on_click()
-  set_focus()
+  set_other_actions()
+  # set_admin_delete_article_ajax()
+  # set_admin_delete_comment_ajax()
+  # set_article_preview_ajax()
+  # close_alert_on_click()
+  # set_focus()
 
 set_search_actions = () ->
   $('form#search a').click () ->
@@ -46,16 +47,6 @@ set_authentication_ajax = () ->
   $('#sign_in_form').on 'hide.bs.modal', () ->
     $('div#wrap, div#footer').removeClass('blur')
 
-  $('#sign_up_form form').bind 'ajax:success', (e, data, status, xhr) ->
-    $('#sign_up_form p.alert').html('').addClass('hidden')
-    if data.success
-      $('#sign_up_form').modal('hide')
-      $('#flash_notice').html(data.notice)
-      $('#flash_notice').removeClass('hidden')
-    else
-      $('#sign_up_form p.alert').html(data.errors.join('<br />'))
-      $('#sign_up_form p.alert').removeClass('hidden')
-
   $('#sign_in_form form').bind 'ajax:success', (e, data, status, xhr) ->
     $('#sign_in_form p.alert').html('').addClass('hidden')
     if data.success
@@ -64,10 +55,14 @@ set_authentication_ajax = () ->
       $('#sign_in_form p.alert').html(data.errors.join('<br />'))
       $('#sign_in_form p.alert').removeClass('hidden')
 
-
-
-
-
+set_other_actions = () ->
+  if $('#user_menu #user_btn').hasClass('signed')
+    $('#user_menu').hover () ->
+      $(this).children('#user_btn').addClass('active')
+      $(this).children('#user_menu_box').show()
+    , () ->
+      $(this).children('#user_btn').removeClass('active')
+      $(this).children('#user_menu_box').hide()
 
 set_focus = () ->
   $('#sign_in_form, #sign_up_form').on 'shown', () ->

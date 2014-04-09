@@ -15,16 +15,16 @@
             = link_to 'Sign In', '#sign_in_box'
         ul.nav.nav-pills
           li.google-plus
-            = link_to '#', id: 'like_btn', class: 'twitter' do
+            = link_to omniauth_authorize_path(resource_name, 'google_oauth2') do
               i.fa.fa-google-plus
           li.twitter
-            = link_to '#', id: 'like_btn', class: 'twitter' do
+            = link_to '#', id: 'like_btn' do
               i.fa.fa-twitter
           li.vk
-            = link_to '#', id: 'like_btn', class: 'twitter' do
+            = link_to '#', id: 'like_btn' do
               i.fa.fa-vk
           li.facebook
-            = link_to '#', id: 'like_btn', class: 'twitter' do
+            = link_to omniauth_authorize_path(resource_name, 'facebook') do
               i.fa.fa-facebook
         h5 or
         #log_in_box

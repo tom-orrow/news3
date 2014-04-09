@@ -1,7 +1,17 @@
+$font_family_1: BebasNeue, sans-serif;
+$font_family_2: Adele, sans-serif;
+$font_family_3: Economica, sans-serif;
+$font_family_4: Brandon, sans-serif;
+
+$color_1: #292929;
+$color_2: #00b1d7;
+$color_3: #fff;
+$color_4: #ebebeb;
+
 @import "compass";
 @import "active_admin/mixins";
 @import "active_admin/base";
-@import "twitter-bootstrap-static/bootstrap";
+@import "frontend/bootstrap_and_overrides";
 @import "frontend/articles";
 
 .redactor_box {

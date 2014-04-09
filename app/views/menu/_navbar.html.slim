@@ -6,9 +6,24 @@ ul#categories_menu
   - @categories_list.each do |category|
     li class=('active' if @current_category == category.id)
       = link_to category.name, category_path(category)
-span#user
-  = link_to '#sign_in_form', remote: true, data: { toggle: 'modal', target: '#sign_in_form' } do
-    span.glyphicon.glyphicon-user
+#user_menu
+  - if user_signed_in?
+    = link_to '#', id: 'user_btn', class: 'signed' do
+      = image_tag 'empty_userpic.png'
+    #user_menu_box
+      = image_tag 'empty_userpic.png'
+      = link_to 'asjuferov', '#', id: 'user_name'
+      = link_to 'Edit Profile', '#', id: 'user_edit_profile'
+      ul
+        - if current_user.role? :admin
+          li = link_to 'Admin Panel', admin_root_path
+          - else if current_user.role? :moderator
+            li = link_to 'Admin Panel', admin_moderation_path
+        li = link_to 'Add new article', new_article_path
+        li = link_to 'Sign Out', destroy_user_session_path, method: :delete
+  - else
+    = link_to '#sign_in_form', remote: true, data: { toggle: 'modal', target: '#sign_in_form' }, id: 'user_btn' do
+      span.glyphicon.glyphicon-user
 #latest_and_popular
   .col-xs-5#latest
     span Latest post
