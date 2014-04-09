@@ -11,4 +11,10 @@ class ArticleMailer < Devise::Mailer
     @reason = reason
     devise_mail(article.user, :article_rejected)
   end
+
+  def new_article_message(article, category, subscribers)
+    @article = article
+    @category = category
+    subscribers.each { |subscriber| devise_mail(subscriber, :new_article) }
+  end
 end

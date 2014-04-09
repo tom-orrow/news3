@@ -13,7 +13,7 @@ ActiveAdmin.register Article do
       b link_to article.title, edit_admin_article_path(article)
     end
     column "Categories" do |article|
-      p article.category.map { |c| c.name }.join(", ")
+      p article.categories.map { |c| c.name }.join(", ")
     end
     column :active
     column :created_at
@@ -28,7 +28,7 @@ ActiveAdmin.register Article do
       f.input :body, input_html: { class: 'redactor' }
     end
     f.inputs 'Details' do
-      f.input :category, include_blank: false
+      f.input :categories, include_blank: false
       f.input :tag_list, hint: 'Comma separated'
       f.input :active
     end

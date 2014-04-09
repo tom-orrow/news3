@@ -9,7 +9,7 @@ class Article < ActiveRecord::Base
 
   # Associations
   belongs_to :user
-  has_and_belongs_to_many :category
+  has_and_belongs_to_many :categories
   has_many :comments, dependent: :destroy
   has_attached_file :title_pic, styles: { medium: '', thumb: '' },
     default_url: '/assets/articles/:style/missing_titlepic.jpg',
@@ -42,6 +42,15 @@ class Article < ActiveRecord::Base
     ArticleMailer.article_rejected_message(self, reason).deliver
   end
 
+  def send_notification_to_subscribers
+    checked_subscribers = [self.user]
+    categories = self.categories.each do |category|
+      subscribers = category.users - checked_subscribers
+      checked_subscribers << subscribers
+      ArticleMailer.new_article_message(self, category, subscribers).deliver
+    end
+  end
+
   private
 
   # HACK: Use category.find() instead
@@ -55,7 +64,7 @@ class Article < ActiveRecord::Base
   end
 
   def require_at_least_one_category
-    errors.add :base, 'Article requires at least one category selected.' if category.blank?
+    errors.add :base, 'Article requires at least one category selected.' if categories.blank?
   end
 
   def reprocess_titlepic

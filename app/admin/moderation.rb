@@ -9,6 +9,7 @@ ActiveAdmin.register_page 'Moderation' do
     article.active = true
     if article.save
       article.send_article_confirmed_message
+      article.send_notification_to_subscribers
       redirect_to admin_moderation_path, notice: 'Article has been confirmed.'
     else
       redirect_to admin_moderation_path, error: 'Failed to confirm article.'
@@ -29,7 +30,7 @@ ActiveAdmin.register_page 'Moderation' do
           table_for Article.inactive.order('created_at DESC') do
             column('User')       { |article| article.user.email }
             column('Title')      { |article| b link_to(article.title, admin_moderation_edit_path(article)) }
-            column('Categories') { |article| article.category.map { |c| c.name }.join(", ") }
+            column('Categories') { |article| article.categories.map { |c| c.name }.join(", ") }
             column('Created At') { |article| article.created_at }
           end
           hr

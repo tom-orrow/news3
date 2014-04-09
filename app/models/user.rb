@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   # Associations
   has_many :services, dependent: :destroy
   has_many :articles, dependent: :destroy
+  has_and_belongs_to_many :categories
 
   # Validations
   validates :role, inclusion: ['admin', 'moderator', '']

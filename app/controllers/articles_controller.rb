@@ -1,10 +1,11 @@
 class ArticlesController < ApplicationController
   include ActionView::Helpers::TextHelper
-  load_and_authorize_resource except: [:index, :show, :search, :preview]
+  load_and_authorize_resource only: [:new, :create, :destroy]
 
   def index
     @articles = Article.by_category(@current_category).active.paginate(page: params[:page])
     @page_title = @current_category ? 'Category: ' << @categories_list.find(@current_category).name : 'New Articles'
+    @unsubscribed = current_user.categories.exists?(@current_category).nil? if @current_category
   end
 
   def search
@@ -17,6 +18,20 @@ class ArticlesController < ApplicationController
     )
     @page_title = "Search Results: #{pluralize(@articles.count, 'Article', 'Articles')} Found"
     render :index
+  end
+
+  def subscribe
+    authorize! :update, current_user
+    category = @categories_list.find(@current_category)
+    current_user.categories << category
+    redirect_to category_path(category), notice: "You have been successfully subscribed for new #{category.name} articles."
+  end
+
+  def unsubscribe
+    authorize! :update, current_user
+    category = @categories_list.find(@current_category)
+    current_user.categories.delete(category)
+    redirect_to category_path(category), notice: "You have been successfully unsubscribed from new #{category.name} articles."
   end
 
   def show
@@ -38,7 +53,6 @@ class ArticlesController < ApplicationController
 
   def create
     params[:article][:user_id] = current_user.id
-    params[:article][:active] = true
     @article = Article.new(article_params)
     if @article.save
       redirect_to root_path, notice: 'Article successfully created and is waiting for moderation.'
