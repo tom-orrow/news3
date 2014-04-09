@@ -1,2 +1,63 @@
 .row.index-content .col-xs-6 { margin-top: 15px; }
 
+#index_most_popular {
+  height: 450px;
+
+  .col-xs-4 {
+    @include background-image(linear-gradient(left top, #052C35, #00738B));
+    background-color: #055668;
+    padding: 0;
+    position: relative;
+    margin: 0;
+
+    &.highlight { @include background-image(linear-gradient(left top, #034757, #034757)); }
+
+    a { position: absolute; }
+    a.wrapper {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    a.category {
+      top: 10px;
+      left: 20px;
+      font-family: $font_family_5;
+      font-size: 14px;
+      text-transform: uppercase;
+      &:hover { color: $color_3; }
+    }
+    a.comments {
+      top: 10px;
+      right: 20px;
+      font-family: $font_family_5;
+      font-size: 14px;
+      color: $color_3;
+      &:hover { color: $color_2; }
+    }
+    a.title {
+      bottom: 20px;
+      left: 20px;
+      font-family: $font_family_5;
+      font-size: 26px;
+      color: $color_3;
+      &:hover { color: $color_2; }
+    }
+  }
+  .col-xs-4 {
+    .col-xs-12 {
+      @include opacity(0.4);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      height: 225px;
+      margin-bottom: 0;
+      border-right: 1px solid #2E4E55;
+      border-bottom: 1px solid #2E4E55;
+    }
+    &:first-child .col-xs-12, &:nth-child(4) .col-xs-12, &:last-child .col-xs-12 { border-bottom: none; }
+  }
+  .col-xs-4:first-child .col-xs-12 { height: 450px; }
+}
+
+

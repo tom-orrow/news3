@@ -1,40 +1,111 @@
 $(document).ready ->
-  set_search_actions()
-  show_page_sidebox_sticker()
+  set_index_most_popular_hovering()
+  prepare_navbar()
+  prepare_reviews_carousel()
+  prepare_autosizing()
+  show_page_sidebox()
   set_authentication_ajax()
   set_other_actions()
+  set_article_preview_ajax()
   # set_admin_delete_article_ajax()
   # set_admin_delete_comment_ajax()
-  # set_article_preview_ajax()
+
   # close_alert_on_click()
-  # set_focus()
 
-set_search_actions = () ->
-  $('form#search a').click () ->
-    $(this).parent().css { left: '0px' }
+set_index_most_popular_hovering = () ->
+  $('#index_most_popular a').hover () ->
+    $(this).parent().toggleClass('highlight')
+
+hoverTimer = null
+navbarShown = false
+prepare_navbar = () ->
+  if $('#index_most_popular').length > 0
+    $(window).scroll (e) ->
+      if $(this).scrollTop() > 450
+        $('#header_navbar').addClass('navbar-fixed-top')
+      else
+        $('#header_navbar').removeClass('navbar-fixed-top')
+  else
+    $('#header_navbar').addClass('navbar-fixed-top')
+
+  $('#categories_menu li').hover () ->
+    hoveredLi = $(this)
+    if navbarShown
+      hoveredLi.children('.nav_sub').show()
+    else
+      hoverTimer = setTimeout () ->
+        navbarShown = true
+        hoveredLi.children('.nav_sub').show()
+      , 300
+  , (e) ->
+    window.clearTimeout(hoverTimer)
+    $(this).children('.nav_sub').hide()
+    $(this).find('.nav_sub_categories > li').removeClass('active')
+    $(this).find('.nav_sub_categories > li:first-child').addClass('active')
+
+  $('#categories_menu').mouseleave () ->
+    navbarShown = false
+
+  $('.nav_sub_categories > li:not(:last-child) a').hover () ->
+    $(this).parent().siblings('li').removeClass('active')
     $(this).parent().addClass('active')
-    $(this).children('.arrow-right').hide()
-    $(this).siblings('input').focus()
-    return false
 
-  $(document).mouseup (e) ->
-    search_form = $('form#search')
-    if !search_form.is(e.target) && search_form.has(e.target).length == 0 && search_form.hasClass('active')
-      search_form.removeClass('active')
-      search_form.css { left: '-300px' }
-      search_form.find('a .arrow-right').show()
-      search_form.children('input').val('')
+  $('#search').click () ->
+    $(this).find('form input').focus()
 
-show_page_sidebox_sticker = () ->
+reviews_carousel_offset = 0
+prepare_reviews_carousel = () ->
+  $('.reviews_carousel_wrapper .controls').click () ->
+    if $(this).hasClass('prev') && !$(this).hasClass('inactive')
+      $(this).siblings('.reviews_carousel').animate({left: (reviews_carousel_offset + 240) + 'px'}, 300)
+      $(this).siblings('.next').removeClass('inactive')
+      reviews_carousel_offset += 240
+      if reviews_carousel_offset == 0
+        $(this).addClass('inactive')
+    if $(this).hasClass('next') && !$(this).hasClass('inactive')
+      $(this).siblings('.reviews_carousel').animate({left: (reviews_carousel_offset - 240) + 'px'}, 300)
+      $(this).siblings('.prev').removeClass('inactive')
+      reviews_carousel_offset -= 240
+      if $(this).siblings('.reviews_carousel').width() + reviews_carousel_offset == 960
+        $(this).addClass('inactive')
+    return false;
+
+prepare_autosizing = () ->
+  resize_blocks()
+  $(window).resize () ->
+    resize_blocks()
+
+resize_blocks = () ->
+  fullWidth = $('#header_navbar').width()
+  fullHeight = $(window).height()
+  contentWidth = $('#header_navbar .container').width()
+
+  $('.double_posts').css({
+    width: fullWidth + 'px',
+    'margin-left': Math.ceil((contentWidth - fullWidth) / 2) + 'px'
+  })
+  $('#side_box #offers ul').css(height: fullHeight - 92 + 'px')
+  $('#side_box #related_categories').css(height: fullHeight + 41 + 'px')
+
+show_page_sidebox = () ->
   $(window).scroll (e) ->
-    if $(this).scrollTop() > 700 && $('.col-xs-4#side_box').css('position') != 'fixed'
-      $('div#side_box').css({'position': 'fixed', 'top': '10px'})
+    if $(this).scrollTop() > 485 && $('.col-xs-4#side_box').css('position') != 'fixed'
+      $('div#side_box').css({'position': 'fixed', 'top': '51px'})
     else
       $('div#side_box').css({'position': 'absolute', 'top': '0px'})
+  $('#related_categories ul li').hover () ->
+    $(this).addClass('highlight')
+  , () ->
+    $(this).removeClass('highlight')
+  $('#related_categories ul li').click () ->
+    if !$(this).hasClass('active')
+      $(this).siblings('li').removeClass('active')
+      $(this).addClass('active')
+
 
 set_authentication_ajax = () ->
   $('#sign_in_form ul.nav.nav-tabs li a').click () ->
-    $('#sign_in_form ul.nav.nav-tabs li.active').removeClass('active')
+    $('#sign_in_form #auth_forms ul.nav.nav-tabs li.active').removeClass('active')
     $(this).parent().addClass('active')
     box_id = $(this).attr('href')
     another_box_id = $('#sign_in_form ul.nav.nav-tabs li:not(.active) a').attr('href')
@@ -55,8 +126,18 @@ set_authentication_ajax = () ->
       $('#sign_in_form p.alert').html(data.errors.join('<br />'))
       $('#sign_in_form p.alert').removeClass('hidden')
 
+  # Show\Hide password recovery form
+  $('#password_recover_link').click () ->
+    $('#auth_forms').hide()
+    $('#restore_password_form').show()
+  $('#password_recovery_cancel').click () ->
+    $('#restore_password_form').hide()
+    $('#auth_forms').show()
+
 set_other_actions = () ->
-  if $('#user_menu #user_btn').hasClass('signed')
+  if $('#user_menu > a').hasClass('signed')
+    $('#user_menu > a').click () ->
+      return false;
     $('#user_menu').hover () ->
       $(this).children('#user_btn').addClass('active')
       $(this).children('#user_menu_box').show()
@@ -64,26 +145,22 @@ set_other_actions = () ->
       $(this).children('#user_btn').removeClass('active')
       $(this).children('#user_menu_box').hide()
 
-set_focus = () ->
-  $('#sign_in_form, #sign_up_form').on 'shown', () ->
-    $('input#user_email').focus()
-
 set_article_preview_ajax = () ->
   $('#new_article a#preview_article_btn').click (event) ->
     event.preventDefault()
     $.post($(this).attr('href'), $('#new_article form').serialize(), (data) ->
       if typeof data.errors != 'undefined'
-        $('p#article_flash_error').html(data.errors.join('<br />'))
-        $('p#article_flash_error').removeClass('hidden')
+        $('#article_flash_error').html(data.errors.join('<br />'))
+        $('#article_flash_error').removeClass('hidden')
         $("html, body").animate({scrollTop: 0}, 100)
       else
-        $('p#article_flash_error').html('')
-        $('p#article_flash_error').addClass('hidden')
-        $('.content-box').addClass('hidden')
-        $('#preview_article_btn').addClass('hidden')
-        $('#cancel_btn').addClass('hidden')
-        $('#submit_article_btn').removeClass('hidden')
-        $('#edit_article_btn').removeClass('hidden')
+        $('#article_flash_error').html('')
+        $('#article_flash_error').addClass('hidden')
+        $('#new_article').hide()
+        $('#preview_article_btn').hide()
+        $('#cancel_btn').hide()
+        $('#submit_article_btn').show()
+        $('#edit_article_btn').show()
         $('#preview_article').html(data)
         title_pic = document.getElementById('article_title_pic').files
         if title_pic != undefined && title_pic.length > 0
@@ -130,6 +207,15 @@ set_article_preview_ajax = () ->
     $('#edit_article_btn').addClass('hidden')
     $('#preview_article').html('')
     $("html, body").animate({scrollTop: 0}, 100)
+
+
+
+
+
+
+
+
+
 
 set_admin_delete_article_ajax = () ->
   $('div.span5.content-box .button-delete').bind 'ajax:success', (e, data, status, xhr) ->

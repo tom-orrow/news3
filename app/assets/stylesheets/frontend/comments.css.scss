@@ -24,13 +24,16 @@
     }
     #comments_count {
       font-family: $font_family_1;
-      color: $color_4;
+      color: $color_1;
       position: absolute;
       right: 20px;
       top: 10px;
     }
   }
   .comments-body { padding: 20px; }
+}
+
+#comments, .active_discussions {
   .avatar {
     z-index: 1;
     position: absolute;
@@ -39,7 +42,6 @@
     background: $color_3;
   }
 }
-
 #new_comment {
   border-top: 1px solid #efefef;
   position: relative;
@@ -94,7 +96,7 @@
       font-family: $font_family_2;
     }
     .comment-meta {
-      color: $color_4;
+      color: $color_5;
       font-size: 0.9em;
       font-weight: 900;
       margin-top: 0.3em;
@@ -113,5 +115,69 @@
       left: -18px;
       top: 25px;
     }
+  }
+}
+
+.active_discussions {
+  ul { padding-left: 18px; }
+  li { margin-bottom: 15px; }
+  .media-body {
+    color: #555;
+    border: 1px solid #ddd;
+    background: $color_4;
+    position: relative;
+    overflow: visible;
+    padding-left: 20px;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+
+    h4 {
+      display: inline-block;
+      font-size: 1.2em;
+      margin-top: 1em;
+      margin-bottom: 0;
+      padding-left: 45px;
+      font-family: $font_family_1;
+    }
+    .comment-meta {
+      color: $color_1;
+      font-size: 0.9em;
+      font-weight: 900;
+      margin-top: 0.3em;
+      margin-bottom: 0.9em;
+      padding-left: 45px;
+      font-family: $font_family_3;
+
+      i { margin-right: 6px; }
+      span.right-border {
+        padding-right: 10px;
+        margin-right: 10px;
+        border-right: 1px solid $color_5;
+      }
+    }
+    .avatar {
+      margin-left: 0;
+      left: -18px;
+      top: 5px;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      bottom: -10px;
+      width: 0;
+      height: 0;
+      border-top: 10px solid $color_4;
+      border-left: 10px solid transparent;
+    }
+  }
+  a {
+    padding-left: 15px;
+    font-family: $font_family_3;
+    font-size: 14px;
+    color: #555;
+
+    i.fa { padding-right: 6px; }
+    &:hover { color: $color_2; }
   }
 }

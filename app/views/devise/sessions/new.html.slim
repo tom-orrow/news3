@@ -8,84 +8,54 @@
         #mini_logo
           | News
           span 3
-        ul.nav.nav-tabs
-          li.active
-            = link_to 'Log In', '#log_in_box'
-          li
-            = link_to 'Sign In', '#sign_in_box'
-        ul.nav.nav-pills
-          li.google-plus
-            = link_to omniauth_authorize_path(resource_name, 'google_oauth2') do
-              i.fa.fa-google-plus
-          li.twitter
-            = link_to '#', id: 'like_btn' do
-              i.fa.fa-twitter
-          li.vk
-            = link_to '#', id: 'like_btn' do
-              i.fa.fa-vk
-          li.facebook
-            = link_to omniauth_authorize_path(resource_name, 'facebook') do
-              i.fa.fa-facebook
-        h5 or
-        #log_in_box
-          = form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f|
-            = f.email_field :email, class: 'form-control', placeholder: 'Email'
-            = f.password_field :password, class: 'form-control', placeholder: 'Password'
-            - if devise_mapping.recoverable? || %w(passwords registrations).include?(controller_name)
-              = link_to 'forgot?', new_password_path(resource_name), id: 'password_recover_link'
-            = f.check_box :remember_me
-            label
-              | Remember me?
-            = button_tag 'Log In', type: 'submit', class: 'button-blue'
+        #auth_forms
+          ul.nav.nav-tabs
+            li.active
+              = link_to 'Log In', '#log_in_box'
+            li
+              = link_to 'Sign In', '#sign_in_box'
+          ul.nav.nav-pills
+            li.google-plus
+              = link_to omniauth_authorize_path(resource_name, 'google_oauth2') do
+                i.fa.fa-google-plus
+            li.twitter
+              = link_to '#', id: 'like_btn' do
+                i.fa.fa-twitter
+            li.vk
+              = link_to '#', id: 'like_btn' do
+                i.fa.fa-vk
+            li.facebook
+              = link_to omniauth_authorize_path(resource_name, 'facebook') do
+                i.fa.fa-facebook
+          h5 or
+          #log_in_box
+            = form_for resource, as: resource_name, url: session_path(resource_name), remote: true, html: { class: 'validate' } do |f|
+              = f.email_field :email, class: 'form-control', placeholder: 'Email'
+              = f.password_field :password, class: 'form-control', placeholder: 'Password'
+              - if devise_mapping.recoverable? || %w(passwords registrations).include?(controller_name)
+                = link_to 'forgot?', '#', id: 'password_recover_link'
+              = f.check_box :remember_me
+              label
+                | Remember me?
+              = button_tag 'Log In', type: 'submit', class: 'button-blue'
 
-        #sign_in_box
-          = form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f|
-            = f.email_field :email, class: 'form-control', placeholder: 'Email'
-            = f.password_field :password, class: 'form-control', placeholder: 'Password'
-            = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password Confirmation'
-            = button_tag 'Sign In', type: 'submit', class: 'button-blue'
-
-
-
-
-
-
-
-
-
-
-
-
-/ .modal.hide.fade tabindex='-1' role='dialog' aria-hidden='true'
-/   .modal-header
-/     h4 Sign In
-/   .modal-body
-/     p.alert.alert-error.hidden
-/     .row-fluid
-/       .span7
-/         = form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f|
-/           .control-group
-/             .controls
-/               .input-prepend
-/                 .add-on
-/                   i.icon-envelope
-/                 = f.email_field :email, placeholder: 'Email'
-/           .control-group
-/             .controls
-/               .input-prepend
-/                 .add-on
-/                   i.icon-lock
-/                 = f.password_field :password, placeholder: 'Password'
-/           .control-group
-/             .controls
-/               label.checkbox
-/                 = f.check_box :remember_me
-/                 | Remember me
-/           hr
-/           .control-group
-/             .controls
-/               = button_tag 'Sign In', type: 'submit', class: 'button-blue'
-/         - if devise_mapping.recoverable? || %w(passwords registrations).include?(controller_name)
-/           = link_to 'Forgot your password?', new_password_path(resource_name), id: 'password_recover_link'
-/       .span5
-/         = render 'devise/shared/links'
+          #sign_in_box
+            = form_for resource, as: resource_name, url: session_path(resource_name), remote: true, html: { class: 'validate' } do |f|
+              = f.email_field :email, class: 'form-control', placeholder: 'Email'
+              = f.password_field :password, class: 'form-control', placeholder: 'Password'
+              = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password Confirmation'
+              = button_tag 'Sign In', type: 'submit', class: 'button-blue'
+        #restore_password_form
+          = form_for resource, as: resource_name, url: password_path(resource_name), method: :post, remote: true, html: { class: 'validate' } do |f|
+            ul.nav.nav-tabs
+              li.active
+                = link_to 'Forgot your password?', '#'
+            - resource.errors.any?
+                p#flash_error.alert.alert-error
+                  - resource.errors.full_messages.each do |message|
+                    = message
+                    br
+            = f.email_field :email, class: 'form-control', autofocus: true, placeholder: 'Email'
+            .actions
+              = link_to 'Cancel', '#', class: 'button-cancel pull-right', id: 'password_recovery_cancel'
+              = f.button 'Send me instructions', class: 'button-blue pull-right', type: 'submit'

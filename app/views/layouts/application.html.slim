@@ -6,24 +6,13 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    = form_tag search_articles_path, method: :get, id: 'search' do |f|
-      = text_field_tag :q, nil, placeholder: 'Search...', id: 'search'
-      = link_to '#' do
-        span.glyphicon.glyphicon-search
     = render file: 'devise/sessions/new'
     #wrap
+      - if current_page?(root_url)
+        = render 'shared/most_popular'
+      = render 'shared/navbar'
       .container#container
         .row
-          .col-xs-12#logo
-            = link_to '/' do
-              | News
-              span 3
-          .col-xs-12
-            = render 'menu/navbar'
           .col-xs-12#content
             == yield
       #push
-    #footer
-      .container
-        .hr
-          p © Company 2013

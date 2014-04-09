@@ -1,0 +1,20 @@
+#new_article {
+  background-color: $color_3;
+  border: 1px solid $color_4;
+  padding: 20px;
+  position: relative;
+
+  form { border: transparent; }
+  #article_category_ids { width: 200px; }
+  #actions {
+    position: absolute;
+    bottom: -65px;
+    right: 0px;
+
+    & *:not(:last-child) {
+      margin-right: 5px;
+    }
+    #submit_article_btn { display: none; }
+    #edit_article_btn { display: none; }
+  }
+}

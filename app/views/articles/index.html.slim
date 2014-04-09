@@ -1,19 +1,8 @@
-.row
-  .col-xs-12
-    .page_subtitle
-      .hr
-      h2
-        ' Latest
-        span Articles
-      h2.subscribe
-        = link_to '#' do
-          | Subscribe +
-
 .row.index-content
   .col-xs-12
     .post-wide-title
       = link_to article_path(@articles.first) do
-        = image_tag 'test_article_titlepic_md.jpg', id: 'titlepic'
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic7.jpg')}")'
       = link_to 'Movies', '#', class: 'post_category'
       h1
         = link_to 'Gravity Review', article_path(@articles.first)
@@ -22,10 +11,45 @@
           span Andrey Yuferov
 
 .row.index-content
+  .col-xs-6
+    .post-small-image-desc
+      = link_to '#' do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic8.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'FIA post-qualifying', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+        .comments-counter
+          | 20
+  .col-xs-6
+    .post-small-image-desc
+      = link_to '#' do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+        .comments-counter
+          | 17
+
+.row.index-content
   .col-xs-4
     .post-image-desc
       = link_to article_path(@articles.first) do
-        = image_tag 'missing.png'
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+        i.fa.fa-play-circle-o
       .description_box
         = link_to 'Movies', '#', class: 'post_category'
         .post_title
@@ -39,7 +63,8 @@
   .col-xs-4
     .post-image-desc
       = link_to article_path(@articles.first) do
-        = image_tag 'missing.png'
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic4.jpg')}")'
+        i.fa.fa-play-circle-o
       .description_box
         = link_to 'Sport', '#', class: 'post_category'
         .post_title
@@ -53,7 +78,8 @@
   .col-xs-4
     .post-image-desc
       = link_to article_path(@articles.first) do
-        = image_tag 'missing.png'
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic5.jpg')}")'
+        i.fa.fa-play-circle-o
       .description_box
         = link_to 'Sport', '#', class: 'post_category'
         .post_title
@@ -69,7 +95,7 @@
   .col-xs-12
     .post-wide-detailed
       = link_to article_path(@articles.first) do
-        = image_tag 'missing.png'
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic6.jpg')}")'
       .meta
         = link_to 'Movies', '#', class: 'post_category'
         .post_title
@@ -87,77 +113,578 @@
 .page_subtitle
   .hr
   h2
-    ' Most
-    span Popular
+    ' Recent
+    span Reviews
+  h2.subscribe
+    = link_to '#' do
+      | Subscribe +
+
+.reviews_carousel_wrapper
+  ul.reviews_carousel
+    li = link_to article_path(@articles.first) do
+      .titlepic style='background-image: url("#{asset_path('test_article_titlepic5.jpg')}")'
+      .post_content
+        .category Video Games
+        .title Assassin's Creed IV: Black Flag
+        .author Andrey Yuferov
+        .rating
+    li = link_to article_path(@articles.first) do
+      .titlepic style='background-image: url("#{asset_path('test_article_titlepic9.jpg')}")'
+      .post_content
+        .category Video Games
+        .title Assassin's Creed IV: Black Flag
+        .author Andrey Yuferov
+        .rating
+    li = link_to article_path(@articles.first) do
+      .titlepic style='background-image: url("#{asset_path('test_article_titlepic9.jpg')}")'
+      .post_content
+        .category Video Games
+        .title Assassin's Creed IV: Black Flag
+        .author Andrey Yuferov
+        .rating
+    li = link_to article_path(@articles.first) do
+      .titlepic style='background-image: url("#{asset_path('test_article_titlepic9.jpg')}")'
+      .post_content
+        .category Video Games
+        .title Assassin's Creed IV: Black Flag
+        .author Andrey Yuferov
+        .rating
+    li = link_to article_path(@articles.first) do
+      .titlepic style='background-image: url("#{asset_path('test_article_titlepic9.jpg')}")'
+      .post_content
+        .category Video Games
+        .title Assassin's Creed IV: Black Flag
+        .author Andrey Yuferov
+        .rating
+    li = link_to article_path(@articles.first) do
+      .titlepic style='background-image: url("#{asset_path('test_article_titlepic9.jpg')}")'
+      .post_content
+        .category Video Games
+        .title Assassin's Creed IV: Black Flag
+        .author Andrey Yuferov
+        .rating
+    li = link_to article_path(@articles.first) do
+      .titlepic style='background-image: url("#{asset_path('test_article_titlepic9.jpg')}")'
+      .post_content
+        .category Video Games
+        .title Assassin's Creed IV: Black Flag
+        .author Andrey Yuferov
+        .rating
+    li = link_to article_path(@articles.first) do
+      .titlepic style='background-image: url("#{asset_path('test_article_titlepic9.jpg')}")'
+      .post_content
+        .category Video Games
+        .title Assassin's Creed IV: Black Flag
+        .author Andrey Yuferov
+        .rating
+  = link_to '#', class: 'controls prev inactive' do
+    i.fa.fa-chevron-left
+  = link_to '#', class: 'controls next' do
+    i.fa.fa-chevron-right
+
+.row.index-content
+  .col-xs-4
+    .active_discussions
+      .sidebox_title Active discussions
+      ul
+        li
+          .media-body
+            = image_tag 'empty_userpic.png', class: 'avatar'
+            h4 Guest
+            .comment-meta
+              span.right-border
+                i.icon-calendar
+                time December 14th, 2013
+              span
+                i.icon-time
+                time 10:03
+          = link_to '#' do
+            i.fa.fa-file-text
+            | FIA post-qualifying
+        li
+          .media-body
+            = image_tag 'empty_userpic.png', class: 'avatar'
+            h4 Guest
+            .comment-meta
+              span.right-border
+                i.icon-calendar
+                time December 14th, 2013
+              span
+                i.icon-time
+                time 10:03
+          = link_to '#' do
+            i.fa.fa-file-text
+            | Gravity Review
+        li
+          .media-body
+            = image_tag 'empty_userpic.png', class: 'avatar'
+            h4 Guest
+            .comment-meta
+              span.right-border
+                i.icon-calendar
+                time December 14th, 2013
+              span
+                i.icon-time
+                time 10:03
+          = link_to '#' do
+            i.fa.fa-file-text
+            | FIA post-qualifying
+        li
+          .media-body
+            = image_tag 'empty_userpic.png', class: 'avatar'
+            h4 Guest
+            .comment-meta
+              span.right-border
+                i.icon-calendar
+                time December 14th, 2013
+              span
+                i.icon-time
+                time 10:03
+          = link_to '#' do
+            i.fa.fa-file-text
+            | Gravity Review
+        li
+          .media-body
+            = image_tag 'empty_userpic.png', class: 'avatar'
+            h4 Guest
+            .comment-meta
+              span.right-border
+                i.icon-calendar
+                time December 14th, 2013
+              span
+                i.icon-time
+                time 10:03
+          = link_to '#' do
+            i.fa.fa-file-text
+            | FIA post-qualifying
+  .col-xs-8
+    .sidebox_title Some more articles
+    .post-wide-detailed.small
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic2.jpg')}")'
+      .meta
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', article_path(@articles.first)
+        .post_date
+          ' By
+          span
+            ' Andrey Yuferov
+          | on Dec 14, 2013
+        .comments-counter
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+          .fadeout
+    .post-wide-detailed.small
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic4.jpg')}")'
+      .meta
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', article_path(@articles.first)
+        .post_date
+          ' By
+          span
+            ' Andrey Yuferov
+          | on Dec 14, 2013
+        .comments-counter
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+          .fadeout
+    .post-wide-detailed.small
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic5.jpg')}")'
+      .meta
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', article_path(@articles.first)
+        .post_date
+          ' By
+          span
+            ' Andrey Yuferov
+          | on Dec 14, 2013
+        .comments-counter
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+          .fadeout
+
+.double_posts
+  .col-xs-6
+    .post-wide-title
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic2.jpg')}")'
+      = link_to 'Movies', '#', class: 'post_category'
+      h1
+        = link_to 'Gravity Review', article_path(@articles.first)
+        .post_date
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-6
+    .post-wide-title
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic4.jpg')}")'
+      = link_to 'Movies', '#', class: 'post_category'
+      h1
+        = link_to 'Gravity Review', article_path(@articles.first)
+        .post_date
+          ' 11th December by
+          span Andrey Yuferov
+
+.page_subtitle
+  .hr
+  h2
+    ' Latest
+    span Articles
   h2.subscribe
     = link_to '#' do
       | Subscribe +
 
 .row.index-content
-  .col-xs-6
-    .post-small-image-desc
-      = link_to '#' do
-        = image_tag 'missing.png'
-      .description_box
-        = link_to 'Sport', '#', class: 'post_category'
-        .post_title
-          = link_to 'FIA post-qualifying', '#'
-        .post_description
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
-        .post_date
-          time.glyphicon.glyphicon-calendar
-          ' 11th December by
-          span Andrey Yuferov
-        .comments-counter
-          | 20
-  .col-xs-6
-    .post-small-image-desc
-      = link_to '#' do
-        = image_tag 'missing.png'
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
       .description_box
         = link_to 'Movies', '#', class: 'post_category'
         .post_title
-          = link_to 'Gravity Review', '#'
+          = link_to 'Gravity Review', article_path(@articles.first)
         .post_description
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
         .post_date
           time.glyphicon.glyphicon-calendar
           ' 11th December by
           span Andrey Yuferov
-        .comments-counter
-          | 17
-  .col-xs-6
-    .post-small-image-desc
-      = link_to '#' do
-        = image_tag 'missing.png'
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
       .description_box
         = link_to 'Sport', '#', class: 'post_category'
         .post_title
           = link_to 'Double points for season', '#'
         .post_description
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut...
         .post_date
           time.glyphicon.glyphicon-calendar
           ' 11th December by
           span Andrey Yuferov
-        .comments-counter
-          | 4
-  .col-xs-6
-    .post-small-image-desc
-      = link_to '#' do
-        = image_tag 'missing.png'
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
       .description_box
         = link_to 'Sport', '#', class: 'post_category'
         .post_title
           = link_to 'FIA post-qualifying', '#'
         .post_description
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
+          | Lorem ipsum dolor sit amet, consectetur...
         .post_date
           time.glyphicon.glyphicon-calendar
           ' 11th December by
           span Andrey Yuferov
-        .comments-counter
-          | 1
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', article_path(@articles.first)
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'Double points for season', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'FIA post-qualifying', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', article_path(@articles.first)
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'Double points for season', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', article_path(@articles.first)
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'Double points for season', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'FIA post-qualifying', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', article_path(@articles.first)
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'Double points for season', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'FIA post-qualifying', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', article_path(@articles.first)
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'Double points for season', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', article_path(@articles.first)
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'Double points for season', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'FIA post-qualifying', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', article_path(@articles.first)
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'Double points for season', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'FIA post-qualifying', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Movies', '#', class: 'post_category'
+        .post_title
+          = link_to 'Gravity Review', article_path(@articles.first)
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(@articles.first) do
+        .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+      .description_box
+        = link_to 'Sport', '#', class: 'post_category'
+        .post_title
+          = link_to 'Double points for season', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+
+
+
+
+
+
+
+
+
 
 / fieldset
 /   legend

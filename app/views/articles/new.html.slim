@@ -1,39 +1,43 @@
-#preview_article
-.span10#new_article
-  = form_for @article, url: articles_path, method: :post, html: { multipart: true, class: 'form-horizontal' } do |f|
-    .content-box
-      fieldset
-        legend New Article
-        p#article_flash_error.alert.alert-error class=('hidden' unless @article.errors.any?)
+.row
+  .col-xs-12
+    .page_subtitle
+      .hr
+      h2
+        ' New
+        span Article
+
+.row
+  .col-xs-12
+    #new_article
+      = form_for @article, url: articles_path, method: :post, html: { multipart: true, role: 'form' } do |f|
+        #article_flash_error.alert.alert-danger.alert-dismissable class=('hidden' unless @article.errors.any?)
           - @article.errors.full_messages.each do |message|
             = message
             br
-        .control-group
-          = f.label :title, class: 'control-label'
-          .controls
-            = f.text_field :title, autofocus: true, placeholder: 'Title...', class: 'span12'
-        .control-group
-          = f.label :title_pic, 'Title Picture', class: 'control-label'
-          .controls
-            = f.file_field :title_pic
-        .control-group
-          = f.label :description, class: 'control-label'
-          .controls
-            = f.text_area :description, placeholder: 'Description', class: 'span12', rows: 4
-        .control-group
-          = f.label :body, class: 'control-label'
-          .controls
-            = f.text_area :body, placeholder: 'Text', id: 'article_body', class: 'span12 redactor', rows: 10
-        .control-group
-          = f.label :category_ids, 'Categories', class: 'control-label'
-          .controls.under_redactor
-            = f.select :category_ids, Category.all().map { |c| [c.name, c.id] }, {}, { multiple: true }
-        .control-group
-          = f.label :tag_list, class: 'control-label'
-          .controls
-            = f.text_field :tag_list, placeholder: 'Tags (separated by commas)', class: 'span12'
-    .form-actions.pull-right
-      = f.button 'Create Article', class: 'button-blue hidden', type: 'submit', id: 'submit_article_btn'
-      = link_to 'Preview', preview_articles_path, id: 'preview_article_btn', class: 'button-blue'
-      = link_to 'Edit', '#', class: 'button-cancel hidden', id: 'edit_article_btn'
-      = link_to 'Cancel', '/', class: 'button-cancel', id: 'cancel_btn'
+        .form-group
+          = f.label :title
+          = f.text_field :title, autofocus: true, placeholder: 'Title...', class: 'form-control'
+        .form-group
+          = f.label :title_pic, 'Cover Image'
+          = f.file_field :title_pic, class: 'form-control'
+        .form-group
+          = f.label :description
+          = f.text_area :description, placeholder: 'Description', rows: 4, class: 'form-control'
+        .form-group
+          = f.label :body
+          = f.text_area :body, placeholder: 'Text', id: 'article_body', class: 'redactor form-control', rows: 10
+        .form-group
+          = f.label :category_ids, 'Categories'
+          = f.select :category_ids, Category.all().map { |c| [c.name, c.id] }, {}, { multiple: true, class: 'form-control' }
+        .form-group
+          = f.label :tag_list
+          = f.text_field :tag_list, placeholder: 'Tags (separated by commas)', class: 'form-control'
+        #actions
+          = f.button 'Create Article', class: 'button-blue', type: 'submit', id: 'submit_article_btn'
+          = link_to 'Preview', preview_articles_path, id: 'preview_article_btn', class: 'button-blue'
+          = link_to 'Edit', '#', class: 'button-cancel', id: 'edit_article_btn'
+          = link_to 'Cancel', '/', class: 'button-cancel', id: 'cancel_btn'
+
+.row
+  .col-xs-12
+    #preview_article

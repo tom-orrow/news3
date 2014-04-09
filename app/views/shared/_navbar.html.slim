@@ -1,0 +1,53 @@
+#header_navbar
+  .container
+    #logo
+      = link_to '/' do
+        | News
+        span 3
+    ul#categories_menu
+      - @categories_list.each_with_index do |category, ci|
+        li
+          = link_to category.name, category_path(category)
+          .nav_sub
+            .container
+              - if ci != 4
+                ul.nav_sub_categories
+                  - category.subcategories.each_with_index do |subcategory, si|
+                    li class=( 'active' if si == 0 )
+                      = link_to subcategory.name, category_path(subcategory)
+                      ul.nav_sub_side
+                        - 5.times do
+                          li = link_to '#' do
+                            .titlepic style='background-image: url("#{asset_path('test_article_titlepic.jpg')}")'
+                            .post_title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                  li = link_to 'View All', category_path(category)
+              - else
+                .platforms_list
+                  - category.subcategories.each do |subcategory|
+                    ul.nav_sub_platforms
+                      li = link_to subcategory.name, category_path(subcategory)
+                      - subcategory.subcategories.each do |platform|
+                        li = link_to platform.name, category_path(platform)
+    .pull-right
+      #search
+        = form_tag search_articles_path, method: :get do |f|
+          span.glyphicon.glyphicon-search
+          = text_field_tag :q, nil, placeholder: 'Search...'
+      #user_menu
+        - if user_signed_in?
+          = link_to '#', class: 'signed' do
+            = image_tag 'empty_userpic.png'
+          #user_menu_box
+            = image_tag 'empty_userpic.png'
+            = link_to 'asjuferov', '#', id: 'user_name'
+            = link_to 'Edit Profile', '#', id: 'user_edit_profile'
+            ul
+              - if current_user.role? :admin
+                li = link_to 'Admin Panel', admin_root_path
+                - else if current_user.role? :moderator
+                  li = link_to 'Admin Panel', admin_moderation_path
+              li = link_to 'Add new article', new_article_path
+              li = link_to 'Log Out', destroy_user_session_path, method: :delete
+        - else
+          = link_to '#sign_in_form', remote: true, data: { toggle: 'modal', target: '#sign_in_form' } do
+            span.glyphicon.glyphicon-user

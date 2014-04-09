@@ -10,6 +10,7 @@ group :development do
   gem 'taps', require: false
   gem 'quiet_assets'
   gem 'bullet'
+  gem 'rails-dev-tweaks'
 end
 
 group :production do
