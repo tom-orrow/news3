@@ -1,7 +1,19 @@
 - @articles.each do |article|
-  .span8
-    h2 = article.title
-    p = article.description
-    p
-      a.btn href="#" View details »
-    hr
+  .span10.article
+    .article-heading
+      h2 = article.title
+      h3
+        em
+          ' by
+        = link_to article.user.email, "#"
+        em
+          '  on
+        = article.user.created_at.to_date
+        em
+          '  with
+        = link_to "0 Comments", "#comments"
+
+    .article-body
+      p
+        = article.description
+        = link_to '»»', article_path(article)

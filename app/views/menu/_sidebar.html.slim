@@ -1,7 +1,7 @@
 .span3
-  .well.sidebar-nav
+  .tab.tab-light-blue Categories
+  .sidebar-box
     ul.nav.nav-list
-      li.nav-header Categories
       li class=( 'active' if @current_category.nil? )
         = link_to "All", root_path
       - @categories.each do |category|

@@ -2,10 +2,18 @@ class ArticlesController < ApplicationController
   before_filter :get_categories
 
   def index
-    @articles = Article.get_active
+    @articles = Article.active
     if @current_category
-      @articles = @articles.where(category_id: @current_category)
+      @articles = @articles.where( category_id: @current_category )
     end
+  end
+
+  def show
+    @article = Article.where( id: params['id'] ).first
+    render :index if @article.nil?
+  end
+
+  def new
   end
 
   private

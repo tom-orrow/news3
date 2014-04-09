@@ -1,0 +1,19 @@
+.span10#new_article
+  = form_for Article.new, url: articles_path, method: 'POST' do |f|
+    .article
+      .article-heading
+        h2 New Article
+      .article-body
+        .control-group
+          .controls
+            = f.text_field :title, autofocus: true, placeholder: "Title", class: "span12"
+          .controls
+            = f.text_area :description, placeholder: "Description", class: "span12", rows: 4
+          .controls
+            = f.text_area :body, placeholder: "Text", class: "span12", rows: 10
+          .controls
+            = f.select :category, Category.all().map { |c| c.name }
+
+    .form-actions.pull-right
+          = f.button "Create Article", class: "btn btn-primary", type: "submit"
+          = link_to "Cancel", "/", class: "btn btn-danger"

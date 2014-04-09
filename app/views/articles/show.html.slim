@@ -1,0 +1,24 @@
+.span10.article
+  .article-heading
+    h2 = @article.title
+    h3
+      em
+        ' by
+      = link_to @article.user.email, "#"
+      em
+        '  on
+      = @article.user.created_at.to_date
+      em
+        '  with
+      = link_to "0 Comments", "#comments"
+
+  .article-body
+    p = @article.body
+
+  .comments
+    .comments-heading
+      h2 Comments &amp; Discussion
+      h3
+        span 0 Comments
+    .comments-body
+
