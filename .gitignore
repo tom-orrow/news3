@@ -19,7 +19,7 @@
 /.env
 
 # Ignore Public Images
-/public/system/*
+/public/uploads/*
 !.keep
 
 # Ignore development Sphinx Indices

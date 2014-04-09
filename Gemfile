@@ -29,6 +29,8 @@ gem 'redactor-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'jbuilder', '~> 1.2'
 gem 'compass-rails', "~> 2.0.alpha.0"
+gem 'carrierwave'
+gem 'mini_magick'
 
 # DB
 gem 'pg'
@@ -43,7 +45,6 @@ gem 'omniauth-google-oauth2'
 gem 'unicorn'
 gem 'sidekiq'
 gem 'ancestry'
-gem 'paperclip'
 gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
 gem "cancan"
 gem 'acts-as-taggable-on'

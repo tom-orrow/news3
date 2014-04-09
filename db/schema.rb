@@ -17,19 +17,16 @@ ActiveRecord::Schema.define(version: 20131014144731) do
   enable_extension "plpgsql"
 
   create_table "articles", force: true do |t|
-    t.string   "title",                                  null: false
+    t.string   "title",                       null: false
     t.text     "description"
     t.text     "body"
-    t.boolean  "active",                 default: false, null: false
+    t.boolean  "active",      default: false, null: false
     t.string   "slug"
+    t.string   "title_pic"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title_pic_file_name"
-    t.string   "title_pic_content_type"
-    t.integer  "title_pic_file_size"
-    t.datetime "title_pic_updated_at"
-    t.boolean  "delta",                  default: true,  null: false
+    t.boolean  "delta",       default: true,  null: false
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree

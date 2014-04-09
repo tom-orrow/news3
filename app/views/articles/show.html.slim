@@ -1,6 +1,6 @@
 .span10.content-box
   .titlepic_original
-    = image_tag @article.title_pic.url
+    = image_tag @article.title_pic.url(:medium)
   .article-heading
     h2 = @article.title
     p.article-info
