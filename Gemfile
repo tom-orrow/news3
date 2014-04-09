@@ -47,6 +47,7 @@ gem 'omniauth-google-oauth2'
 gem 'unicorn'
 gem 'sidekiq'
 gem 'ancestry'
+gem 'impressionist'
 gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
 gem "cancan"
 gem 'acts-as-taggable-on'

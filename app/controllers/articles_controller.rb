@@ -46,6 +46,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.friendly.find(params[:id])
+    impressionist(@article, nil, { unique: [:session_hash] })
     @comments = @article.comments.roots.includes(:user)
     @comment = @article.comments.build(parent_id: params[:parent_id])
     @related_articles = Article.tagged_with(@article.tag_list, any: true).limit(15)

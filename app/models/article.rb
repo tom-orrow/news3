@@ -13,6 +13,7 @@ class Article < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   mount_uploader :title_pic, TitlepicUploader
   acts_as_taggable
+  is_impressionable
 
   # Validations
   validates :title, length: { minimum: 15, maximum: 90 }
