@@ -1,11 +1,19 @@
-h2 Forgot your password?
-
-.row-fluid
-  .span6
-    = form_for resource, as: resource_name, url: password_path(resource_name), method: :post do |f|
-      .control-group
-        .controls
-          = f.email_field :email, autofocus: true, placeholder: 'Email'
-      .control-group
-        .controls
-          = button_tag 'Send me reset password instructions', type: 'submit', class: 'btn btn-success'
+.span10#restore_password
+  = form_for resource, as: resource_name, url: password_path(resource_name), method: :post do |f|
+    .article
+      fieldset
+        legend Forgot your password?
+        - resource.errors.any?
+            p#flash_error.alert.alert-error
+              - resource.errors.full_messages.each do |message|
+                = message
+                br
+        .control-group
+          .controls
+            .input-prepend
+              .add-on
+                i.icon-envelope
+              = f.email_field :email, autofocus: true, placeholder: 'Email'
+    .form-actions.pull-right
+      = f.button 'Send me reset password instructions', class: 'button-blue', type: 'submit'
+      = link_to 'Cancel', '/', class: 'button-cancel'

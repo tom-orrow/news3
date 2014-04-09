@@ -4,7 +4,8 @@ News3::Application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'registrations',
     sessions: 'sessions',
-    confirmations: 'confirmations'
+    confirmations: 'confirmations',
+    passwords: 'passwords'
   }
   root 'articles#index'
 

@@ -9,4 +9,9 @@ class ApplicationController < ActionController::Base
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end
+
+  before_filter do
+    @categories ||= Category.all
+    @current_category = params['category_id'] ? params['category_id'].to_i : nil
+  end
 end

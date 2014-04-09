@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-  before_filter :get_categories
   load_and_authorize_resource except: [:index, :show, :search], through: :current_user
 
   def index
@@ -39,11 +38,6 @@ class ArticlesController < ApplicationController
   end
 
   private
-
-  def get_categories
-    @categories ||= Category.all
-    @current_category = params['category_id'] ? params['category_id'].to_i : nil
-  end
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to :root, alert: exception.message
