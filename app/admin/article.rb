@@ -10,7 +10,7 @@ ActiveAdmin.register Article do
     column :title do |article|
       b link_to article.title, edit_admin_article_path(article)
     end
-    column :category do |article|
+    column "Categories" do |article|
       p article.category.map { |c| c.name }.join(", ")
     end
     column :active

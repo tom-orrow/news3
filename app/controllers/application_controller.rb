@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter do
-    @categories ||= Category.all
+    @categories_list ||= Category.all
     @current_category = params['category_id'] ? params['category_id'].to_i : nil
   end
 end

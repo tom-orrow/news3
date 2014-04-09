@@ -1,5 +1,6 @@
 - if @articles.empty?
-  h3 Your search yielded no results
+    .span10
+      h3#empty_search_results Your search gave no results
 - else
   - @articles.each do |article|
     .span5.content-box

@@ -1,6 +1,14 @@
 $base-text-color: #666;
 $meta-color: #A8A7A7;
 
+.content-box {
+  @include box-shadow(0 1px 1px 0 rgba(0,0,0,.1));
+  background: #fbfbfb;
+  margin-bottom: 20px;
+  border: 1px solid #efefef;
+  border-bottom: 0px;
+}
+
 // Index page
 .span5.content-box {
   width: 390px;

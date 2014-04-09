@@ -14,14 +14,6 @@ body {
 
 #wrap > .container-fluid { padding-top: 60px; }
 
-.content-box {
-  @include box-shadow(0 1px 1px 0 rgba(0,0,0,.1));
-  background: #fbfbfb;
-  margin-bottom: 20px;
-  border: 1px solid #efefef;
-  border-bottom: 0px;
-}
-
 .anchor {
   padding-top: 60px;
   margin-top: -60px;
@@ -31,6 +23,9 @@ textarea { resize: none; }
 
 #new_user { margin-top: 14px; }
 
+#empty_search_results {
+  text-align: center;
+}
 
 .button-blue, .button-cancel, .button-delete {
   @include box-shadow(0 0 5px #8fcde7 inset, 0 1px 1px #eee);
