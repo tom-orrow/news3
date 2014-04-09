@@ -6,17 +6,19 @@ ul#categories_menu
   - @categories_list.each do |category|
     li class=('active' if @current_category == category.id)
       = link_to category.name, category_path(category)
-span#mini_logo N3
+span#user
+  = link_to '#sign_in_form', remote: true, data: { toggle: 'modal', target: '#sign_in_form' } do
+    span.glyphicon.glyphicon-user
 #latest_and_popular
-  .row
-    .col-md-5#latest
-      span Latest post
-      = link_to 'Gravity Review', '#'
-    .col-md-6#popular
-      span Popular
-      = link_to 'Fitbit Ultra – Review', '#'
-      .square-right
+  .col-xs-5#latest
+    span Latest post
+    = link_to 'Gravity Review', '#'
+  .col-xs-7#popular
+    span Popular
+    = link_to 'Fitbit Ultra – Review', '#'
+    .square-right
 
+= render file: 'devise/sessions/new'
 
 / .navbar.navbar-inverse.navbar-fixed-top
 /   .navbar-inner
@@ -48,6 +50,5 @@ span#mini_logo N3
 /             li
 /               = link_to 'Sign Up', '#sign_up_form', remote: true, class: 'header_nav_btn', data: { toggle: 'modal' }
 
-/ = render file: 'devise/sessions/new'
 / = render file: 'devise/registrations/new'
 

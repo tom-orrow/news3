@@ -1,33 +1,66 @@
-#sign_in_form.modal.hide.fade tabindex='-1' role='dialog' aria-hidden='true'
-  .modal-header
-    h4 Sign In
-  .modal-body
-    p.alert.alert-error.hidden
-    .row-fluid
-      .span7
-        = form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f|
-          .control-group
-            .controls
-              .input-prepend
-                .add-on
-                  i.icon-envelope
-                = f.email_field :email, placeholder: 'Email'
-          .control-group
-            .controls
-              .input-prepend
-                .add-on
-                  i.icon-lock
-                = f.password_field :password, placeholder: 'Password'
-          .control-group
-            .controls
-              label.checkbox
-                = f.check_box :remember_me
-                | Remember me
-          hr
-          .control-group
-            .controls
-              = button_tag 'Sign In', type: 'submit', class: 'button-blue'
-        - if devise_mapping.recoverable? || %w(passwords registrations).include?(controller_name)
-          = link_to 'Forgot your password?', new_password_path(resource_name), id: 'password_recover_link'
-      .span5
-        = render 'devise/shared/links'
+#sign_in_form.modal.fade tabindex='-1' role='dialog' aria-hidden='true'
+  .modal-dialog
+    .modal-content
+      .modal-header
+        = button_tag class: 'close', data: { dismiss: 'modal' }, aria: { hidden: 'true' } do
+          | &times;
+      .modal-body
+        #mini_logo
+          | News
+          span 3
+        p cvcvvccsadcsadasd
+        p cvcvvccsadcsadasd
+        p cvcvvccsadcsadasd
+        p cvcvvccsadcsadasd
+        p cvcvvccsadcsadasd
+        p cvcvvccsadcsadasd
+        p cvcvvccsadcsadasd
+        p cvcvvccsadcsadasd
+        p cvcvvccsadcsadasd
+        p cvcvvccsadcsadasd
+        p cvcvvccsadcsadasd
+
+
+
+
+
+
+
+
+
+
+
+
+/ .modal.hide.fade tabindex='-1' role='dialog' aria-hidden='true'
+/   .modal-header
+/     h4 Sign In
+/   .modal-body
+/     p.alert.alert-error.hidden
+/     .row-fluid
+/       .span7
+/         = form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f|
+/           .control-group
+/             .controls
+/               .input-prepend
+/                 .add-on
+/                   i.icon-envelope
+/                 = f.email_field :email, placeholder: 'Email'
+/           .control-group
+/             .controls
+/               .input-prepend
+/                 .add-on
+/                   i.icon-lock
+/                 = f.password_field :password, placeholder: 'Password'
+/           .control-group
+/             .controls
+/               label.checkbox
+/                 = f.check_box :remember_me
+/                 | Remember me
+/           hr
+/           .control-group
+/             .controls
+/               = button_tag 'Sign In', type: 'submit', class: 'button-blue'
+/         - if devise_mapping.recoverable? || %w(passwords registrations).include?(controller_name)
+/           = link_to 'Forgot your password?', new_password_path(resource_name), id: 'password_recover_link'
+/       .span5
+/         = render 'devise/shared/links'

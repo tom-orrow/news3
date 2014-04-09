@@ -15,7 +15,8 @@
       time = comment.created_at.strftime('%R')
   p = simple_format comment.content
   .actions
-    = link_to 'Reply', '#new_comment', onclick: "reply_comment(#{comment.id}, this)", class: 'button-blue small'
+    = link_to '#new_comment', onclick: "reply_comment(#{comment.id}, this)", class: 'button-blue small' do
+      span.glyphicon.glyphicon-share-alt
     - if current_user && current_user.role?(:admin)
       = link_to 'Delete', article_comment_path(@article.id, comment), class: 'button-delete small', method: :delete, remote: true
 = nested_comments comment.children.arrange(order: :created_at)

@@ -13,3 +13,7 @@ a:hover { text-decoration: none; }
        url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
+.container{
+  max-width: none !important;
+  width: 970px;
+}

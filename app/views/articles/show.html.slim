@@ -1,6 +1,111 @@
 .row.show-content
-  .col-md-12
-    = image_tag 'missing.png', id: 'titlepic'
+  .col-xs-12
+    #article_top
+      .image-squares
+        .square1
+        .square2
+        .square3
+        .square4
+        .square5
+        .square6
+        .square7
+        .square8
+        .square9
+        .square10
+      = image_tag 'test_article_titlepic.jpg', id: 'titlepic'
+      #titlepic_comments_counter
+        .hr
+        span
+          | There are
+          b.glyphicon.glyphicon-comment
+          em comments about this article.
+          #comments_number = @article.comments.count
+        b#add_comment
+          = link_to 'Add Comment +', '#new_comment'
+      h1
+        | Gravity Review
+        .post_date
+          ' 11th December by
+          span Andrey Yuferov
+      ul#social_like
+        li
+          = link_to '#', id: 'like_btn', class: 'twitter' do
+            i.fa.fa-twitter
+        li
+          = link_to '#', id: 'like_btn', class: 'facebook' do
+            i.fa.fa-facebook
+        li
+          = link_to '#', id: 'like_btn', class: 'vk' do
+            i.fa.fa-vk
+
+  .col-xs-12
+    .row
+      .col-xs-8
+        #article_content
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+          p
+            iframe width="575" height="323" src="//www.youtube.com/embed/OiTiKOy59o4" frameborder="0" allowfullscreen
+
+        #comments
+          .comments-heading
+            .hr
+            a name='comments'
+              .anchor
+            h2#comments_title Comments &amp; Discussion
+            h2#comments_count = pluralize(@article.comments.count, 'Comment', 'Comments')
+          .comments-body
+            #nested_comments
+              = nested_comments @comments.arrange(order: :created_at)
+
+              = form_for [@article, @comment] do |f|
+                = f.hidden_field :parent_id
+                = f.hidden_field :article_id
+                p
+                  a name='new_comment'
+                    .anchor
+                  = image_tag 'empty_userpic.png', class: 'avatar'
+                  = f.text_area :content, rows: 4, class: 'form-control'
+                  p.actions
+                    = f.submit 'Post Comment', id: 'submit_comment', class: 'button-blue'
+                    = f.button 'Cancel', id: 'reset_reply', class: 'button-cancel', type: 'reset', \
+                      onclick: 'empty_comment_parent_on_click()'
+      .col-xs-4
+        #side_box
+          #tags_list
+            ul
+              li#tags_title Tags
+              li
+                = link_to 'Movies', '#'
+              li
+                = link_to 'Gravity', '#'
+              li
+                = link_to 'Review', '#'
+              li
+                = link_to 'BestFilmEver', '#'
+          #offers
+            p
+              | You'd also like...
+              .left-arrow
+              .right-pic |||
+            ul
+              li
+                = link_to 'Rush Review', '#'
+              li
+                = link_to 'Behind the Candelabra', '#'
+              li
+                = link_to 'Fitbit Ultra - Review', '#'
+              li
+                = link_to 'London: The Modern Babylon - Review', '#'
+              li
+                = link_to 'The Hobbit: The Desolation of Smaug', '#'
+
+
+
+
+
 
 
 

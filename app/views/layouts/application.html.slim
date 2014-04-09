@@ -12,18 +12,18 @@ html
         span.glyphicon.glyphicon-search
         .arrow-right
     #wrap
-      .container
+      .container#container
         .row
-          .col-md-12#logo
-            = link_to 'News3', '/'
-          .col-md-12
+          .col-xs-12#logo
+            = link_to '/' do
+              | News
+              span 3
+          .col-xs-12
             = render 'menu/navbar'
-          .col-md-12#content
+          .col-xs-12#content
             == yield
       #push
     #footer
       .container
         .hr
           p © Company 2013
-
-

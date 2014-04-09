@@ -1,5 +1,6 @@
 $(document).ready ->
   set_search_actions()
+  show_page_sidebox_sticker()
   set_authentication_ajax()
   set_admin_delete_article_ajax()
   set_admin_delete_comment_ajax()
@@ -23,7 +24,12 @@ set_search_actions = () ->
       search_form.find('a .arrow-right').show()
       search_form.children('input').val('')
 
-
+show_page_sidebox_sticker = () ->
+  $(window).scroll (e) ->
+    if $(this).scrollTop() > 700 && $('.col-xs-4#side_box').css('position') != 'fixed'
+      $('div#side_box').css({'position': 'fixed', 'top': '10px'})
+    else
+      $('div#side_box').css({'position': 'absolute', 'top': '0px'})
 
 
 

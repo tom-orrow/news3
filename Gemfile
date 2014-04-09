@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'compass-rails', "~> 2.0.alpha.0"
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'font-awesome-sass'
 
 # DB
 gem 'pg'

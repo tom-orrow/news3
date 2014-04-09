@@ -1,28 +1,44 @@
-.page_subtitle
-  .hr
-  h2
-    ' Latest
-    span Articles
-  h2.subscribe
-    = link_to '#' do
-      | Subscribe +
+.row
+  .col-xs-12
+    .page_subtitle
+      .hr
+      h2
+        ' Latest
+        span Articles
+      h2.subscribe
+        = link_to '#' do
+          | Subscribe +
 
 .row.index-content
-  .col-md-4
-    = image_tag 'missing.png'
+  .col-xs-12
+    #article_top
+      = link_to article_path(@articles.first) do
+        = image_tag 'test_article_titlepic_md.jpg', id: 'titlepic'
+      .post_category
+        | Movies
+      h1
+        = link_to 'Gravity Review', article_path(@articles.first)
+        .post_date
+          ' 11th December by
+          span Andrey Yuferov
+
+  .col-xs-4
+    = link_to article_path(@articles.first) do
+      = image_tag 'missing.png'
     .description_box
       .post_category
         | Movies
       .post_title
         = link_to 'Gravity Review', article_path(@articles.first)
       .post_description
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
       .post_date
         time.glyphicon.glyphicon-calendar
         ' 11th December by
         span Andrey Yuferov
-  .col-md-4
-    = image_tag 'missing.png'
+  .col-xs-4
+    = link_to article_path(@articles.first) do
+      = image_tag 'missing.png'
     .description_box
       .post_category
         | Sport
@@ -34,8 +50,9 @@
         time.glyphicon.glyphicon-calendar
         ' 11th December by
         span Andrey Yuferov
-  .col-md-4
-    = image_tag 'missing.png'
+  .col-xs-4
+    = link_to article_path(@articles.first) do
+      = image_tag 'missing.png'
     .description_box
       .post_category
         | Sport
@@ -43,45 +60,6 @@
         = link_to 'FIA post-qualifying', '#'
       .post_description
         | Lorem ipsum dolor sit amet, consectetur...
-      .post_date
-        time.glyphicon.glyphicon-calendar
-        ' 11th December by
-        span Andrey Yuferov
-  .col-md-4
-    = image_tag 'missing.png'
-    .description_box
-      .post_category
-        | Movies
-      .post_title
-        = link_to 'Gravity Review', '#'
-      .post_description
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
-      .post_date
-        time.glyphicon.glyphicon-calendar
-        ' 11th December by
-        span Andrey Yuferov
-  .col-md-4
-    = image_tag 'missing.png'
-    .description_box
-      .post_category
-        | Sport
-      .post_title
-        = link_to 'Double points for season', '#'
-      .post_description
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
-      .post_date
-        time.glyphicon.glyphicon-calendar
-        ' 11th December by
-        span Andrey Yuferov
-  .col-md-4
-    = image_tag 'missing.png'
-    .description_box
-      .post_category
-        | Sport
-      .post_title
-        = link_to 'FIA post-qualifying', '#'
-      .post_description
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
       .post_date
         time.glyphicon.glyphicon-calendar
         ' 11th December by
@@ -97,58 +75,66 @@
       | Subscribe +
 
 .row.index-content
-  .col-md-6
-    = image_tag 'missing.png'
-    .description_box
-      .post_title
-        = link_to 'FIA post-qualifying', '#'
-      .post_description
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
-      .post_date
-        time.glyphicon.glyphicon-calendar
-        ' 11th December by
-        span Andrey Yuferov
-      .comments-counter
-        | 20
-  .col-md-6
-    = image_tag 'missing.png'
-    .description_box
-      .post_title
-        = link_to 'Gravity Review', '#'
-      .post_description
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
-      .post_date
-        time.glyphicon.glyphicon-calendar
-        ' 11th December by
-        span Andrey Yuferov
-      .comments-counter
-        | 17
-  .col-md-6
-    = image_tag 'missing.png'
-    .description_box
-      .post_title
-        = link_to 'Double points for season', '#'
-      .post_description
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
-      .post_date
-        time.glyphicon.glyphicon-calendar
-        ' 11th December by
-        span Andrey Yuferov
-      .comments-counter
-        | 4
-  .col-md-6
-    = image_tag 'missing.png'
-    .description_box
-      .post_title
-        = link_to 'FIA post-qualifying', '#'
-      .post_description
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
-      .post_date
-        time.glyphicon.glyphicon-calendar
-        ' 11th December by
-        span Andrey Yuferov
-      .comments-counter
-        | 1
+  .col-xs-6
+    .box
+      = link_to '#' do
+        = image_tag 'missing.png'
+      .description_box
+        .post_title
+          = link_to 'FIA post-qualifying', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+        .comments-counter
+          | 20
+  .col-xs-6
+    .box
+      = link_to '#' do
+        = image_tag 'missing.png'
+      .description_box
+        .post_title
+          = link_to 'Gravity Review', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+        .comments-counter
+          | 17
+  .col-xs-6
+    .box
+      = link_to '#' do
+        = image_tag 'missing.png'
+      .description_box
+        .post_title
+          = link_to 'Double points for season', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+        .comments-counter
+          | 4
+  .col-xs-6
+    .box
+      = link_to '#' do
+        = image_tag 'missing.png'
+      .description_box
+        .post_title
+          = link_to 'FIA post-qualifying', '#'
+        .post_description
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          ' 11th December by
+          span Andrey Yuferov
+        .comments-counter
+          | 1
 
 / fieldset
 /   legend

@@ -1,6 +1,6 @@
 $layout-font-family: 'Open Sans Condensed', sans-serif;
 
-@include sticky-footer(60px, "#wrap", "#push", "#footer");
+@include sticky-footer(30px, "#wrap", "#push", "#footer");
 
 // Vertical Rhythm
 @include establish-baseline;
@@ -32,10 +32,19 @@ $layout-font-family: 'Open Sans Condensed', sans-serif;
   src: asset-url('Economica.woff', font);
 }
 
+@font-face {
+  font: {
+     family: 'Brandon';
+     weight: 'normal';
+     style: 'normal';
+  }
+  src: asset-url('Brandon_bld.otf', font);
+}
+
 html, body { height: 100%; }
 
 body {
-  background: #000 image-url('bg.png');
+  background: #000 image-url('bg2.png');
   color: #333;
 }
 
@@ -49,21 +58,25 @@ body {
   background: url('stripe.png') repeat;
 }
 
-#footer .hr {
+#footer p {
   padding: 0px 15px;
-  line-height: 28px;
+  line-height: 30px;
+  margin: 0;
+  border-top: 1px dashed #292929;
 }
 
 #logo {
-  margin-top: 50px;
-  padding: 0px 20px;
+  margin-top: 35px;
 
   a {
     @include adjust-font-size-to(62px);
     line-height: 80px;
     font-weight: bold;
-    color: rgba(255, 255, 255, 1);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: #292929;
+    text-shadow: 2px 2px rgba(0,0,0,0.3);
+    font-family: Economica, sans-serif;
+
+    span { color: #00b1d7; }
   }
 }
 
@@ -72,8 +85,8 @@ body {
     position: absolute;
     width: 0;
     height: 0;
-    left: 5px;
-    border: 5px solid #046380;
+    left: -5px;
+    border: 5px solid #292929;
   }
   .first { top: 0px; }
   .second {
@@ -87,8 +100,9 @@ body {
 }
 
 #categories_menu {
-  width: 100%;
-  background-color: #046380;
+  width: 950px;
+  background-color: #292929;
+  margin-left: -10px;
   padding-left: 25px;
   margin-bottom: 0px;
   z-index: 3;
@@ -117,34 +131,42 @@ body {
   }
 }
 
-#mini_logo {
-  @include adjust-font-size-to(40px);
+#user {
   z-index: 10;
-  font-family: Adele, sans-serif;
   position: absolute;
-  top: 2px;
-  right: 28px;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 1);
+  top: 13px;
+  right: 15px;
+  a {
+    color: #E4E4E4;
+    background-color: #292929;
+    border-left: 1px solid #bebebe;
+    padding: 11px 15px 10px;
+    &:hover {
+      color: #00b1d7;
+      border-left: 1px solid #00b1d7;
+    }
+  }
 }
 
 #latest_and_popular {
-  @include box-shadow(10px 2px 1px 0 rgba(0,0,0, 0.3));
   z-index: 2;
+  width: 960px;
   text-transform: uppercase;
   font-family: BebasNeue, sans-serif;
   font-size: 16px;
-  line-height: 28px;
+  line-height: 29px;
+  padding-bottom: 29px;
+  margin-bottom: 15px;
 
   #latest {
-    background-color: #EFECCA;
+    @include box-shadow(0px 2px 1px 0 rgba(0,0,0, 0.3));
+    background-color: #fff;
     color: #000;
-    margin-left: 25px;
     border-top: 2px solid #00b1d7;
     line-height: 27px;
 
     span {
-      border-right: 1px dashed #fff;
+      border-right: 1px dashed #292929;
       padding-right: 10px;
       margin: 0 10px 0 5px;
     }
@@ -159,9 +181,10 @@ body {
   }
 
   #popular {
+    @include box-shadow(0px 2px 1px 0 rgba(0,0,0, 0.3));
     background-color: #00b1d7;
     color: #fff;
-    width: 652px;
+    width: 550px;
 
     span {
       border-right: 1px dashed #fff;
@@ -194,7 +217,7 @@ form#search {
   left: -300px;
 
   input {
-    line-height: 28px;
+    line-height: 27px;
     width: 300px;
     border: 5px solid #00b1d7;
     padding: 5px 10px 1px 10px;
@@ -203,150 +226,84 @@ form#search {
   a {
     margin-top: 20px;
     background-color: #00b1d7;
-    padding: 14px 16px;
+    padding: 15px 16px 13px;
     color: #fff;
 
     .arrow-right {
       position: absolute;
       width: 0;
       height: 0;
-      top: 14px;
+      top: 13px;
       right: -8px;
       border-top: 8px solid transparent;
       border-bottom: 8px solid transparent;
       border-left: 8px solid #00b1d7;
     }
     &:hover {
-      background-color: #046380;
-      .arrow-right { border-left: 8px solid #046380; }
+      background-color: #292929;
+      .arrow-right { border-left: 8px solid #292929; }
     }
   }
 }
 
+textarea { resize: none; }
 
+.button-blue, .button-cancel, .button-delete {
+  @include border-radius(2px);
+  text-transform: uppercase;
+  padding: 11px 16px 8px;
+  font-size: 16px;
+  border: 0px;
+  color: #fff !important;
+  text-decoration: none;
+  font-family: BebasNeue, sans-serif;
+  cursor: pointer;
+  background-color: #00b1d7;
 
+  &:hover { background-color: #292929; }
+  &.small {
+    font-size: 16px;
+    padding: 10px 13px 4px;
+  }
+}
+.button-cancel { background-color: #CECECE; }
+.button-delete { background-color: #DF3030; }
 
+@import 'social-media-icons/*.png';
+@include all-social-media-icons-sprites;
+$social_media_icons_height: social-media-icons-sprite-height(facebook);
+$social_media_icons_width: social-media-icons-sprite-width(facebook);
+#sign_in_form .modal-content {
+  position: fixed;
+  z-index: 20;
+  left: 50%;
+  top: 100px;
+  margin-left: -188px;
+  width: 376px;
+  background-color: #fff;
+  border-top: 6px solid #00b1d7;
+  border-radius: 0;
 
+  .modal-header {
+    padding: 6px 9px;
+    border: 0;
 
+    button { font-size: 24px; }
+  }
+  .modal-body {
+    #mini_logo {
+      @include adjust-font-size-to(62px);
+      line-height: 80px;
+      font-weight: bold;
+      color: #292929;
+      text-shadow: 2px 2px rgba(0,0,0,0.3);
+      font-family: Economica, sans-serif;
 
-
-
-
-
-
-
-
-
-
-
-
-// textarea { resize: none; }
-
-// #new_user { margin-top: 14px; }
-
-// #empty_search_results {
-//   text-align: center;
-// }
-
-// .button-blue, .button-cancel, .button-delete {
-//   @include box-shadow(0 0 5px #F2AE72 inset, 0 1px 1px #eee);
-//   @include border-radius(2px);
-//   @include opacity(0.8);
-//   text-transform: uppercase;
-//   padding: 1em 1.5em 0.75em;
-//   font-weight: bold;
-//   border: none;
-//   color: #fff !important;
-//   text-decoration: none;
-//   font-family: $layout-font-family;
-//   cursor: pointer;
-//   background-color: #F2AE72;
-
-//   &:hover { @include opaque }
-//   &.small {
-//     @include adjust-font-size-to(12px);
-//   }
-// }
-
-// #subscribe_btn {
-//   padding: 0px 10px;
-//   @include adjust-font-size-to(10px);
-//   i { padding-right: 5px; }
-// }
-
-// .button-cancel {
-//   @include box-shadow(0 0 5px #CBCDCE inset, 0 1px 1px #eee);
-//   background-color: #CBCDCE;
-//   box-sizing: border-box;
-// }
-
-// .button-delete {
-//   @include box-shadow(0 0 5px #DF3030 inset, 0 1px 1px #eee);
-//   margin-left: 10px;
-//   background-color: #DF3030;
-// }
-
-// // Sidebar
-// .tab {
-//   @include border-radius(3px 3px 0 0);
-//   @include background-clip;
-//   @include background-image(linear-gradient(bottom, rgba(0,0,0,.05) -17%, rgba(255,255,255,.05) 117%));
-//   @include opacity(0.7);
-//   @include text-shadow(0 1px 0 rgba(255,255,255,.15));
-//   @include adjust-font-size-to(18px);
-//   padding: 5px 20px;
-//   margin-left: -1px;
-//   font-weight: normal;
-//   display: inline-block;
-//   font-family: $layout-font-family;
-//   color: #808080;
-//   border: 1px solid rgba(0,0,0,.1);
-//   border-bottom: 0px;
-//   background-color: #f2f2f2;
-// }
-
-// .sidebar-box {
-//   @include box-shadow(0 1px 1px 0 rgba(0,0,0,.1));
-//   background: #fff;
-//   margin: 0 0 20px 0;
-//   padding: 20px;
-// }
-
-// // Search Field
-// .navbar-fixed-top form {
-//   position: absolute;
-//   top: 8px;
-//   left: 50%;
-//   margin-left: -100px;
-
-//   .icon-search {
-//     position: absolute;
-//     margin-top: 5px;
-//     margin-left: 12px;
-//   }
-// }
-// #search {
-//   @include box-shadow(0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset);
-//   @include border-radius(20px);
-//   @include adjust-font-size-to(15px);
-//   @include transition(all 0.7s ease 0s);
-//   border: 0 none;
-//   font-family: $layout-font-family;
-//   font-weight: bold;
-//   width: 150px;
-//   padding: 6px 15px 6px 35px;
-//   height: 12px;
-
-//   &:focus { width: 200px; }
-// }
-
-// // Social icons spriting
-// @import 'social-media-icons/*.png';
-// @include all-social-media-icons-sprites;
-// $social_media_icons_height: social-media-icons-sprite-height(facebook);
-// $social_media_icons_width: social-media-icons-sprite-width(facebook);
-
-// .social-media-icons {
-//   height: $social_media_icons_height;
-//   width: $social_media_icons_width;
-// }
+      span { color: #00b1d7; }
+    }
+  }
+  .social-media-icons {
+    height: $social_media_icons_height;
+    width: $social_media_icons_width;
+  }
+}
