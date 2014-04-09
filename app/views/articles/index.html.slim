@@ -1,7 +1,6 @@
-- if @articles.empty?
-    .span10
-      h3#empty_search_results Your search gave no results
-- else
+fieldset.inputs
+  legend
+    span = @page_title
   - @articles.each do |article|
     .span5.content-box
       .article-heading

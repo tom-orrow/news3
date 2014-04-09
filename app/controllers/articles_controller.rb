@@ -1,8 +1,10 @@
 class ArticlesController < ApplicationController
+  include ActionView::Helpers::TextHelper
   load_and_authorize_resource except: [:index, :show, :search, :preview]
 
   def index
     @articles = Article.by_category(@current_category).active.paginate(page: params[:page])
+    @page_title = @current_category ? 'Category: ' << @categories_list.find(@current_category).name : 'New Articles'
   end
 
   def search
@@ -13,6 +15,7 @@ class ArticlesController < ApplicationController
       field_weight: { title: 20 },
       with: { active: true }
     )
+    @page_title = "Search Results: #{pluralize(@articles.count, 'Article', 'Articles')} Found"
     render :index
   end
 
