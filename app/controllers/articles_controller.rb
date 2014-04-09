@@ -52,7 +52,11 @@ class ArticlesController < ApplicationController
   def preview
     params[:article][:user_id] = current_user.id
     @article = Article.new(article_params)
-    render partial: 'edit', article: @article
+    if @article.valid?
+      render partial: 'edit', article: @article
+    else
+      render json: { errors: @article.errors.full_messages }
+    end
   end
 
   def create

@@ -4,11 +4,10 @@
     .content-box
       fieldset
         legend New Article
-        - @article.errors.any?
-            p#flash_error.alert.alert-error
-              - @article.errors.full_messages.each do |message|
-                = message
-                br
+        p#article_flash_error.alert.alert-error class=('hidden' unless @article.errors.any?)
+          - @article.errors.full_messages.each do |message|
+            = message
+            br
         .control-group
           = f.label :title, class: 'control-label'
           .controls
