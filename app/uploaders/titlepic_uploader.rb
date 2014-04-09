@@ -11,7 +11,7 @@ class TitlepicUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "/assets/articles/#{version_name}/missing_titlepic.jpg"
+    "articles/#{version_name}/missing_titlepic.jpg"
   end
 
   version :thumb do
