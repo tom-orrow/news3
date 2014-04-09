@@ -14,6 +14,7 @@ end
 
 group :production do
   gem 'fog'
+  gem 'rails_12factor'
 end
 
 # Assets
