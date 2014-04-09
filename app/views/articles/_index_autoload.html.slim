@@ -1,0 +1,16 @@
+- @articles.each do |article|
+  .col-xs-4
+    .post-image-desc
+      = link_to article_path(article) do
+        .titlepic style='background-image: url("#{article.title_pic.url(:thumb)}")'
+      .description_box
+        = link_to article.categories.first.name, category_path(article.categories.first), class: 'post_category'
+        .post_title
+          = link_to article.title, article_path(article)
+        .post_description
+          = article.description
+        .post_date
+          time.glyphicon.glyphicon-calendar
+          = article_date_format(article)
+          '  by
+          span = article.user.fullname

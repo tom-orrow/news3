@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   load_and_authorize_resource only: [:new, :create, :destroy]
 
   def index
-    @articles = Article.active.includes(:user)
+    @articles = Article.active.action_limit(:index).includes(:user)
     @header_articles = @articles.shift(5)
   end
 
@@ -83,6 +83,19 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     render json: { success: true }
+  end
+
+  def get_more
+    unless ["index", "list"].include? params[:parent_action]
+      return false
+    end
+
+    @articles = Article.active.action_limit(params[:parent_action].to_sym, params[:page].to_i).includes(:user)
+    if @articles.count > 0
+      render partial: params[:parent_action] + "_autoload"
+    else
+      render status: 500
+    end
   end
 
   private

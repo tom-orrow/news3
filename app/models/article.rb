@@ -3,7 +3,11 @@ class Article < ActiveRecord::Base
   extend FriendlyId
 
   friendly_id :title, use: :slugged
-  self.per_page = 1
+
+  ACTION_LIMITS = {
+    index: [26, 12],
+    list: [12, 12]
+  }
 
   default_scope { order('updated_at DESC') }
 
@@ -24,6 +28,13 @@ class Article < ActiveRecord::Base
   # Scopes
   scope :inactive, -> { where(active: false) }
   scope :active, -> { where(active: true) }
+  scope :action_limit, (lambda do |parent_action, page = nil|
+    if page
+      limit(ACTION_LIMITS[parent_action][1]).offset(ACTION_LIMITS[parent_action][0] + ACTION_LIMITS[parent_action][1] * page)
+    else
+      limit(ACTION_LIMITS[parent_action][0])
+    end
+  end)
 
   def send_article_confirmed_message
     ArticleMailer.delay.article_confirmed_message(self)

@@ -442,6 +442,13 @@
   }
 }
 
+#autoload.loading:after {
+  background: url(image_path('ajax-loader_horizontal.gif'));
+  margin: 15px auto;
+  width: 16px;
+  height: 11px;
+}
+
 // Redactor
 .redactor_editor {
   width: 100%;

@@ -7,6 +7,7 @@ $(document).ready ->
   set_authentication_ajax()
   set_other_actions()
   set_article_preview_ajax()
+  get_more_articles_on_scroll()
   # set_admin_delete_article_ajax()
   # set_admin_delete_comment_ajax()
 
@@ -217,12 +218,28 @@ set_article_preview_ajax = () ->
     $('#submit_article_btn').addClass('hidden')
     $('#edit_article_btn').addClass('hidden')
     $('#preview_article').html('')
-    $("html, body").animate({scrollTop: 0}, 100)
+    $("html, body").animate({ scrollTop: 0 }, 100)
 
-
-
-
-
+current_page = 0
+scroll_update_locked = false
+no_more_articles_left = false
+get_more_articles_on_scroll = () ->
+  # Only for index and list pages
+  autoload = $("div#autoload")
+  if autoload.length > 0
+    $(window).scroll () ->
+      if document.documentElement.clientHeight + $(document).scrollTop() >= $(document).height() && !scroll_update_locked && !no_more_articles_left
+        scroll_update_locked = true
+        autoload.addClass("loading")
+        $.post(autoload.attr("data-url"), { parent_action: autoload.attr("data-parent"), page: current_page })
+          .done (data) ->
+            autoload.append(data)
+          .fail () ->
+            no_more_articles_left = true
+          .always () ->
+            scroll_update_locked = false
+            current_page = current_page + 1
+            autoload.removeClass("loading")
 
 
 

@@ -16,6 +16,7 @@ News3::Application.routes.draw do
     collection do
       get 'search'
       post 'preview'
+      post 'get_more'
       get 'subscribe/:category_id', to: 'articles#subscribe', as: 'subscribe'
       get 'unsubscribe/:category_id', to: 'articles#unsubscribe', as: 'unsubscribe'
     end
