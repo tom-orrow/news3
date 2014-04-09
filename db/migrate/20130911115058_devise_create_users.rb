@@ -7,7 +7,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
         email: 'admin@example.com',
         password: 'password',
         password_confirmation: 'password',
-        role: 'admin'
+        role: 'admin',
+        fullname: 'Admin'
       )
       admin.skip_confirmation!
       admin.save!

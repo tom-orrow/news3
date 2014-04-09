@@ -24,6 +24,12 @@
                 .add-on
                   i.icon-lock
                 = f.password_field :password_confirmation, placeholder: 'Password Confirmation'
+          .control-group
+            .controls
+              .input-prepend
+                .add-on
+                  i.icon-user
+                = f.text_field :fullname, placeholder: 'Full Name'
           hr
           .control-group
             .controls

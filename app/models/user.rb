@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   # Validations
   validates :role, inclusion: ['admin', 'moderator', '']
+  validates :fullname, length: { minimum: 3, maximum: 20 }
 
   # Devise. Other options: :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :async,

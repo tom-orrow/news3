@@ -11,7 +11,7 @@
         i.icon-calendar
         b = @article.user.created_at.strftime("%B #{@article.user.created_at.day.ordinalize}, %Y")
       span
-        i.icon-comment
+        i.icon-comments
         b = link_to pluralize(@article.comments.count, 'Comment', 'Comments'), '#comments'
 
   .article-body
