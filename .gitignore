@@ -23,4 +23,5 @@
 !.keep
 
 # Ignore development Sphinx Indices
-/db/sphinx/development/*
+/db/sphinx/*
+/config/*.sphinx.conf
