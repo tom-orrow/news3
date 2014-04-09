@@ -15,7 +15,8 @@ class SessionsController < Devise::SessionsController
     scope    = Devise::Mapping.find_scope!(resource_or_scope)
     resource = args.last || resource_or_scope
     sign_in(scope, resource, options)
-    return render :json => {:success => true, :redirect => stored_location_for(scope) || after_sign_in_path_for(resource)}
+    set_flash_message(:notice, :signed_in)
+    return render :json => {:success => true}
   end
 
   def failure

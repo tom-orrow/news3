@@ -5,6 +5,7 @@ ruby '2.0.0'
 
 group :development do
   gem "better_errors"
+  gem "binding_of_caller"
   gem "awesome_print"
   gem 'taps', :require => false
 end
@@ -31,6 +32,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
 gem 'jbuilder', '~> 1.2'
+gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
+gem "cancan"
 gem 'devise'
 gem 'devise-async'
 gem 'protected_attributes'

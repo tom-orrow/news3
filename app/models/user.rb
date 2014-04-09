@@ -3,10 +3,18 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :async,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
-         :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :vkontakte, :twitter]
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :vkontakte, :twitter]
 
-  attr_accessible :email, :password, :password_confirmation, :fullname
+  validates_inclusion_of :role, in: ['admin', 'moderator', '']
+  attr_accessible :email, :password, :password_confirmation, :fullname, :role
   has_many :services
+
+  ROLES = %w(admin moderator)
+
+  def role?(base_role)
+    return false unless role.present? # A user have a role attribute. If not set, the user does not have any roles.
+    ROLES.index(base_role.to_s) <= ROLES.index(role)
+  end
 
   def self.create_user(auth)
     user = User.new(
