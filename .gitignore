@@ -16,7 +16,7 @@
 /tmp
 
 # Ignore dotenv.
-/.env
+# /.env
 
 # Ignore Public Images
 /public/uploads/*
