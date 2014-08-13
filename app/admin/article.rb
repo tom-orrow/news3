@@ -18,7 +18,7 @@ ActiveAdmin.register Article do
     column :active
     column :created_at
     column :updated_at
-    default_actions
+    actions
   end
 
   form do |f|

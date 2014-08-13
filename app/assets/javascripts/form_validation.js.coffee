@@ -1,7 +1,8 @@
 $(document).ready ->
   $('form.validate').submit () ->
-    validate_form($(this))
-    return false
+    form_valid = validate_form($(this))
+    if !form_valid
+      return false
   $('form.validate input').focusout () ->
     validate_field $(this)
 
@@ -11,10 +12,7 @@ form_valid = true
 validate_form = (form) ->
   form_valid = true
   $.each form.find('input:not([type=hidden], [type=checkbox])'), (i, field) ->
-    validate_field(field)
-    return true
-
-  form.submit() if form_valid
+    validate_field($(field))
 
 validate_field = (field)->
   error = null
@@ -62,4 +60,3 @@ check_password_confirm_field = (field) ->
 check_textarea_field = (field) ->
 check_email_field = (field) ->
   error = [field, 'Wrong email format.'] unless $(field).val().match(/.*@.*\..*/)
-

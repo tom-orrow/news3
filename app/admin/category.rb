@@ -8,7 +8,7 @@ ActiveAdmin.register Category do
     column "Articles Count" do |category|
       p category.articles.count
     end
-    default_actions
+    actions
   end
 
   form do |f|

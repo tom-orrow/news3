@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0'
-ruby '2.0.0'
+gem 'rails', '4.0.3'
+ruby '2.1.2'
 
 group :development do
   gem 'better_errors'
@@ -22,33 +22,34 @@ end
 # Assets
 gem 'dalli'
 gem 'slim'
-gem 'sass-rails', '~> 4.0.0'
-gem 'coffee-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 gem 'redactor-rails', github: 'SammyLin/redactor-rails'
-gem 'will_paginate', '~> 3.0'
-gem 'jbuilder', '~> 1.2'
-gem 'compass-rails', "~> 2.0.alpha.0"
+gem 'will_paginate'
+gem 'jbuilder'
+gem 'compass-rails', github: 'Compass/compass-rails'
 gem 'carrierwave'
-gem 'mini_magick'
-gem 'font-awesome-sass'
+gem 'mini_magick', github: 'minimagick/minimagick'
+gem "font-awesome-rails", github: 'bokmann/font-awesome-rails'
 
 # DB
 gem 'pg'
 gem 'mysql2'
 
 # OmniAuth
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
+gem 'omniauth', github: 'intridea/omniauth'
+gem 'omniauth-facebook', github: 'mkdynamic/omniauth-facebook'
+gem 'omniauth-google-oauth2', github: 'zquestz/omniauth-google-oauth2'
 
 # Other
 gem 'unicorn'
 gem 'sidekiq'
 gem 'ancestry'
 gem 'impressionist'
-gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'sprockets', '2.11.0' # 2.12.0 is broken
 gem "cancan"
 gem 'acts-as-taggable-on'
 gem 'devise'
